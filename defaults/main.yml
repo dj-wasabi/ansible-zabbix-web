@@ -31,6 +31,7 @@ zabbix_web_max_input_time: 300
 zabbix_server_database: pgsql
 zabbix_server_database_long: postgresql
 
+zabbix_server_name: "{{ inventory_hostname }}"
 zabbix_server_hostname: "{{ inventory_hostname }}"
 zabbix_server_listenport: 10051
 zabbix_server_dbhost: localhost
