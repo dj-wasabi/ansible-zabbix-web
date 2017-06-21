@@ -48,3 +48,4 @@
     - role: dj-wasabi.zabbix-server
       changed_when: False
     - role: ansible-zabbix-web
+      changed_when: False

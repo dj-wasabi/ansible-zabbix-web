@@ -23,6 +23,16 @@ dependency:
 driver:
   name: docker
 
+molecule:
+  test:
+    sequence:
+      - destroy
+      - syntax
+      - create
+      - converge
+      - verify
+      - destroy
+
 docker:
   containers:
     - name: zabbix-web-mysql-centos
