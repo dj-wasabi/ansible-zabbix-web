@@ -23,7 +23,7 @@ Table of Contents
 
 Build Status:
 
-[![Build Status](https://travis-ci.org/dj-wasabi/ansible-zabbix-server.svg?branch=master)](https://travis-ci.org/dj-wasabi/ansible-zabbix-server)
+[![Build Status](https://travis-ci.org/dj-wasabi/ansible-zabbix-web.svg?branch=master)](https://travis-ci.org/dj-wasabi/ansible-zabbix-web)
 
 This is an role for installing and maintaining the zabbix-server.
 
@@ -49,7 +49,7 @@ Please sent Pull Requests or suggestions when you want to use this role for othe
 
 ## Zabbix Versions
 
-See the following list of supported Operating systems with the Zabbix releases:
+See the following list of supported Operating systems with the Zabbix releases.
 
 ### Zabbix 3.2
 
@@ -95,11 +95,65 @@ See the following list of supported Operating systems with the Zabbix releases:
 
 Installing this role is very simple: `ansible-galaxy install dj-wasabi.zabbix-web`
 
+When the Zabbix Web needs to be running on the same host as the Zabbix Server, please also install the Zabbix Server by executing the following command: `ansible-galaxy install dj-wasabi.zabbix-server` 
+
 #Role Variables
 
 ## Main variables
-There are some variables in de default/main.yml which can (Or needs to) be changed/overriden:
 
+The following is an overview of all available configuration default for this role.
+
+### Overall Zabbix
+
+* `zabbix_version`: This is the version of zabbix. Default: 3.2. Can be overridden to 2.0, 2.4, 2.2 or 2.0.
+* `zabbix_timezone`: This is the timezone. The Apache Virtual Host needs this parameter. Default: Europe/Amsterdam
+* `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
+* `zabbix_repo_yum`: A list with Yum repository configuration.
+
+### Zabbix Web specific
+
+* `zabbix_url`: This is the url on which the zabbix web interface is available. Default is zabbix.example.com, you should override it. For example, see "Example Playbook"
+* `zabbix_url_aliases`: A list with Aliases for the Apache Virtual Host configuration. 
+* `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
+* `zabbix_web_max_execution_time`: 
+* `zabbix_web_memory_limit`: 
+* `zabbix_web_post_max_size`: 
+* `zabbix_web_upload_max_filesize`: 
+* `zabbix_web_max_input_time`:
+
+### Zabbix Server
+
+* `zabbix_server_database`: The type of database used. Can be: mysql or pgsql
+* `zabbix_server_database_long`: The type of database used, but long name. Can be: mysql or postgresql
+* `zabbix_server_hostname`: The hostname on which the zabbix-server is running. Default set to: {{ inventory_hostname }}
+* `zabbix_server_listenport`: On which port the Zabbix Server is available. Default: 10051
+* `zabbix_server_dbhost`: The hostname on which the database is running.
+* `zabbix_server_dbname`: The database name which is used by the Zabbix Server.
+* `zabbix_server_dbuser`: The database username which is used by the Zabbix Server.
+* `zabbix_server_dbpassword`: The database user password which is used by the Zabbix Server.
+* `zabbix_server_dbport`: The database port which is used by the Zabbix Server.
+ 
+## Examples of configuration
+
+### zabbix_repo_yum
+
+Current default configuration and example for  
+
+````
+zabbix_repo_yum:
+  - name: zabbix
+    description: Zabbix Official Repository - $basearch
+    baseurl: http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/{{ ansible_distribution_major_version }}/$basearch/
+    gpgcheck: 0
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+    state: present
+  - name: zabbix
+    description: Zabbix Official Repository non-supported - $basearch
+    baseurl: http://repo.zabbix.com/non-supported/rhel/{{ ansible_distribution_major_version }}/$basearch/
+    gpgcheck: 0
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+    state: present
+````
 
 # Dependencies
 
@@ -149,9 +203,7 @@ This is a 2 host setup. On 1 host (Named: zabbix-server)the Zabbix Server is run
 This role is configured to be tested with Molecule. Molecule will boot at least 3 different kind of containers, each of the supported Operating System (Debian, Ubuntu and Red Hat).
 Pull Requests are only merged when the tests are succeeding.
 
-
-For more information, please check the following page: https://wdijkerman.wordpress.com/2016/07/10/testing-ansible-roles-with-molecule-testinfra-and-docker
-
+For more information, please check the following page: https://www.werner-dijkerman.nl/2016/07/10/testing-ansible-roles-with-molecule-testinfra-and-docker
 
 # License
 
