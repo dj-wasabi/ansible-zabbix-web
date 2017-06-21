@@ -23,6 +23,12 @@ zabbix_repo_yum:
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
     state: present
 
+zabbix_web_max_execution_time: 300
+zabbix_web_memory_limit: 128M
+zabbix_web_post_max_size: 16M
+zabbix_web_upload_max_filesize: 2M
+zabbix_web_max_input_time: 300
+
 zabbix_server_database: pgsql
 zabbix_server_database_long: postgresql
 

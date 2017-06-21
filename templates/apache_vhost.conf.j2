@@ -43,11 +43,11 @@
   RewriteRule ^$ /index.php [L]
 
   ## Custom fragment
-  php_value max_execution_time 300
-  php_value memory_limit 128M
-  php_value post_max_size 16M
-  php_value upload_max_filesize 2M
-  php_value max_input_time 300
+  php_value max_execution_time {{ zabbix_web_max_execution_time | default('300') }}
+  php_value memory_limit {{ zabbix_web_memory_limit | default('128M') }}
+  php_value post_max_size {{ zabbix_web_post_max_size | default('16M') }}
+  php_value upload_max_filesize {{ zabbix_web_upload_max_filesize | default('2M') }}
+  php_value max_input_time {{ zabbix_web_max_input_time | default('300') }}
   # Set correct timezone.
   php_value date.timezone {{ zabbix_timezone }}
 </VirtualHost>
