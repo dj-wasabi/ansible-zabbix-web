@@ -1,0 +1,36 @@
+---
+# defaults file for zabbix-web
+
+zabbix_url: zabbix.example.com
+zabbix_url_aliases: []
+zabbix_apache_vhost_port: 80
+zabbix_version: 3.2
+zabbix_timezone: Europe/Amsterdam
+zabbix_repo: zabbix
+zabbix_vhost: True
+
+zabbix_repo_yum:
+  - name: zabbix
+    description: Zabbix Official Repository - $basearch
+    baseurl: http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/{{ ansible_distribution_major_version }}/$basearch/
+    gpgcheck: 0
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+    state: present
+  - name: zabbix
+    description: Zabbix Official Repository non-supported - $basearch
+    baseurl: http://repo.zabbix.com/non-supported/rhel/{{ ansible_distribution_major_version }}/$basearch/
+    gpgcheck: 0
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+    state: present
+
+zabbix_server_database: pgsql
+zabbix_server_database_long: postgresql
+
+zabbix_server_hostname: "{{ inventory_hostname }}"
+zabbix_server_listenport: 10051
+zabbix_server_dbhost: localhost
+zabbix_server_dbname: zabbix-server
+zabbix_server_dbuser: zabbix-server
+zabbix_server_dbpassword: zabbix-server
+zabbix_server_dbport: 5432
+

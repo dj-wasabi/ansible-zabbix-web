@@ -1,0 +1,64 @@
+---
+# tasks file for wdijkerman.zabbix-web
+
+- name: "Include OS-specific variables"
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: "Set short version name"
+  set_fact:
+      zabbix_short_version: "{{ zabbix_version | regex_replace('\\.', '') }}"
+  tags:
+    - always
+
+- name: "Get Apache version"
+  shell: apachectl -v | grep 'version' | awk -F '/' '{ print $2 }'| awk '{ print $1 }' | cut -c 1-3
+  changed_when: False
+  register: apachectl_version
+  tags:
+    - zabbix-server
+    - apache
+
+- name: "Set correct apache_version"
+  set_fact:
+    apache_version: "{{ apachectl_version.stdout }}"
+  tags:
+    - zabbix-server
+    - apache
+
+- name: "Install the correct repository"
+  include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+  tags:
+    - always
+
+- name: "Install the correct repository"
+  include: "Debian.yml"
+  when: ansible_os_family == "Debian"
+  tags:
+    - always
+
+- name: "Create zabbix-web directory"
+  file:
+    path: /etc/zabbix/web
+    owner: "{{ apache_user }}"
+    group: "{{ apache_group }}"
+    state: directory
+    mode: 0755
+  tags:
+    - zabbix-web
+    - init
+    - config
+
+- name: "Configure zabbix-web"
+  template:
+    src: zabbix.conf.php.j2
+    dest: /etc/zabbix/web/zabbix.conf.php
+    owner: "{{ apache_user }}"
+    group: "{{ apache_group }}"
+    mode: 0644
+  notify:
+    - restart apache
+  tags:
+    - zabbix-web
+    - init
+    - config

@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: Werner Dijkerman
+  description: Installing and maintaining zabbix-web for RedHat/Debian/Ubuntu.
+  company: myCompany.Dotcom
+  license: license (GPLv3)
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+      - 6
+      - 7
+    - name: Ubuntu
+      versions:
+      - lucid
+      - precise
+      - trusty
+    - name: Debian
+      versions:
+      - squeeze
+      - wheezy
+  categories:
+    - monitoring
+dependencies:
+  - { name: geerlingguy.apache, src: geerlingguy.apache, tags: apache }
+  - { name: dj-wasabi.zabbix-server, src: dj-wasabi.zabbix-server, tags: zabbix-server }

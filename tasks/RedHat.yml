@@ -1,0 +1,34 @@
+---
+# Tasks specific for RedHat systems
+
+- name: "RedHat | Install basic repo file"
+  yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    gpgcheck: "{{ item.gpgcheck }}"
+    gpgkey: "{{ item.gpgkey }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ zabbix_repo_yum }}"
+  tags:
+    - zabbix-web
+
+- name: "RedHat | Install zabbix-web-{{ database_type }}"
+  yum:
+    pkg: zabbix-web-{{ database_type }}
+    state: present
+  tags:
+    - zabbix-web
+
+- name: "RedHat | Install apache vhost"
+  template:
+    src: apache_vhost.conf.j2
+    dest: /etc/httpd/conf.d/zabbix.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: zabbix_vhost
+  notify:
+    - restart apache
+  tags:
+    - zabbix-server
