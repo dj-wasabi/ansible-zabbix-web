@@ -15,15 +15,13 @@
   changed_when: False
   register: apachectl_version
   tags:
-    - zabbix-server
-    - apache
+    - always
 
 - name: "Set correct apache_version"
   set_fact:
     apache_version: "{{ apachectl_version.stdout }}"
   tags:
-    - zabbix-server
-    - apache
+    - always
 
 - name: "Install the correct repository"
   include: "RedHat.yml"

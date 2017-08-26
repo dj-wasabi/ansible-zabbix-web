@@ -29,7 +29,7 @@ This is an role for installing and maintaining the zabbix-server.
 
 This is one of the 'dj-wasabi' roles which configures your whole zabbix environment. See an list for the complete list:
 
- * zabbix-web (https://galaxy.ansible.com/dj-wasabi/zabbix-server/)
+ * zabbix-web (https://galaxy.ansible.com/dj-wasabi/zabbix-web/)
  * zabbix-server (https://galaxy.ansible.com/dj-wasabi/zabbix-server/)
  * zabbix-proxy (https://galaxy.ansible.com/dj-wasabi/zabbix-proxy/)
  * zabbix-javagateway (https://galaxy.ansible.com/dj-wasabi/zabbix-javagateway/)
@@ -106,14 +106,14 @@ The following is an overview of all available configuration default for this rol
 ### Overall Zabbix
 
 * `zabbix_version`: This is the version of zabbix. Default: 3.2. Can be overridden to 2.0, 2.4, 2.2 or 2.0.
-* `zabbix_timezone`: This is the timezone. The Apache Virtual Host needs this parameter. Default: Europe/Amsterdam
-* `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
 * `zabbix_repo_yum`: A list with Yum repository configuration.
 
 ### Zabbix Web specific
 
 * `zabbix_url`: This is the url on which the zabbix web interface is available. Default is zabbix.example.com, you should override it. For example, see "Example Playbook"
 * `zabbix_url_aliases`: A list with Aliases for the Apache Virtual Host configuration. 
+* `zabbix_timezone`: This is the timezone. The Apache Virtual Host needs this parameter. Default: Europe/Amsterdam
+* `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_web_max_execution_time`: 
 * `zabbix_web_memory_limit`: 
