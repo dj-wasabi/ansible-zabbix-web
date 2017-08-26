@@ -1,2 +1,4 @@
 .idea
 .molecule
+__pycache__
+.cache

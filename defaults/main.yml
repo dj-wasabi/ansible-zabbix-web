@@ -39,4 +39,3 @@ zabbix_server_dbname: zabbix-server
 zabbix_server_dbuser: zabbix-server
 zabbix_server_dbpassword: zabbix-server
 zabbix_server_dbport: 5432
-
