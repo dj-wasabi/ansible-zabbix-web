@@ -25,7 +25,7 @@ Build Status:
 
 [![Build Status](https://travis-ci.org/dj-wasabi/ansible-zabbix-web.svg?branch=master)](https://travis-ci.org/dj-wasabi/ansible-zabbix-web)
 
-This is a role for installing and maintaining the zabbix-web, the web UI for the zabbix-server role.
+This is a role for installing and maintaining the zabbix-web, the web UI for the zabbix-server.
 
 This is one of the 'dj-wasabi' roles which configures your whole zabbix environment. See an list for the complete list:
 
