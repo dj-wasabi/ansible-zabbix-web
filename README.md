@@ -91,13 +91,13 @@ See the following list of supported Operating systems with the Zabbix releases.
   * Debian 7
   * xenserver 6
 
-#Installation
+# Installation
 
 Installing this role is very simple: `ansible-galaxy install dj-wasabi.zabbix-web`
 
 When the Zabbix Web needs to be running on the same host as the Zabbix Server, please also install the Zabbix Server by executing the following command: `ansible-galaxy install dj-wasabi.zabbix-server`
 
-#Role Variables
+# Role Variables
 
 ## Main variables
 
