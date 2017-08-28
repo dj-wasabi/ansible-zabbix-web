@@ -1,5 +1,15 @@
 ---
 
+- name: "Debian | Install gpg key"
+  apt_key:
+    id: 79EA5ED4
+    url: http://repo.zabbix.com/zabbix-official-repo.key
+  when: zabbix_repo == "zabbix"
+  tags:
+    - zabbix-web
+    - init
+    - config
+
 - name: "Debian | Installing repository {{ ansible_distribution }}"
   apt_repository:
     repo: "{{ item }} http://repo.zabbix.com/zabbix/{{ zabbix_version }}/{{ ansible_distribution.lower() }}/ {{ ansible_distribution_release }} main"
@@ -8,16 +18,6 @@
   with_items:
     - deb-src
     - deb
-  tags:
-    - zabbix-web
-    - init
-    - config
-
-- name: "Debian | Install gpg key"
-  apt_key:
-    id: 79EA5ED4
-    url: http://repo.zabbix.com/zabbix-official-repo.key
-  when: zabbix_repo == "zabbix"
   tags:
     - zabbix-web
     - init
@@ -55,7 +55,7 @@
     pkg: zabbix-frontend-php
     state: present
     update_cache: yes
-    cache_valid_time: 3600
+    cache_valid_time: 0
   tags:
     - zabbix-web
     - init

@@ -23,4 +23,3 @@ galaxy_info:
     - monitoring
 dependencies:
   - { name: geerlingguy.apache, src: geerlingguy.apache, tags: apache }
-  - { name: dj-wasabi.zabbix-server, src: dj-wasabi.zabbix-server, tags: zabbix-server }
