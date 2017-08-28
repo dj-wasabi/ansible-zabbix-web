@@ -37,15 +37,15 @@
       changed_when: installation_dependencies.changed
 
   roles:
-#    - role: geerlingguy.postgresql
-#      when: inventory_hostname in groups['postgresql']
-#      ignore_errors: True
-#      changed_when: False
-#    - role: geerlingguy.mysql
-#      when: inventory_hostname in groups['mysql']
-#      ignore_errors: True
-#      changed_when: False
-#    - role: dj-wasabi.zabbix-server
-#      changed_when: False
+    - role: geerlingguy.postgresql
+      when: inventory_hostname in groups['postgresql']
+      ignore_errors: True
+      changed_when: False
+    - role: geerlingguy.mysql
+      when: inventory_hostname in groups['mysql']
+      ignore_errors: True
+      changed_when: False
+    - role: dj-wasabi.zabbix-server
+      changed_when: False
     - role: ansible-zabbix-web
       changed_when: False
