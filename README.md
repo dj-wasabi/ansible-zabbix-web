@@ -19,13 +19,13 @@ Table of Contents
 - [License](#license)
 - [Author Information](#author-information)
 
-#Overview
+# Overview
 
 Build Status:
 
 [![Build Status](https://travis-ci.org/dj-wasabi/ansible-zabbix-web.svg?branch=master)](https://travis-ci.org/dj-wasabi/ansible-zabbix-web)
 
-This is an role for installing and maintaining the zabbix-server.
+This is a role for installing and maintaining the zabbix-web, the web UI for the zabbix-server.
 
 This is one of the 'dj-wasabi' roles which configures your whole zabbix environment. See an list for the complete list:
 
@@ -91,13 +91,13 @@ See the following list of supported Operating systems with the Zabbix releases.
   * Debian 7
   * xenserver 6
 
-#Installation
+# Installation
 
 Installing this role is very simple: `ansible-galaxy install dj-wasabi.zabbix-web`
 
-When the Zabbix Web needs to be running on the same host as the Zabbix Server, please also install the Zabbix Server by executing the following command: `ansible-galaxy install dj-wasabi.zabbix-server` 
+When the Zabbix Web needs to be running on the same host as the Zabbix Server, please also install the Zabbix Server by executing the following command: `ansible-galaxy install dj-wasabi.zabbix-server`
 
-#Role Variables
+# Role Variables
 
 ## Main variables
 
@@ -111,14 +111,14 @@ The following is an overview of all available configuration default for this rol
 ### Zabbix Web specific
 
 * `zabbix_url`: This is the url on which the zabbix web interface is available. Default is zabbix.example.com, you should override it. For example, see "Example Playbook"
-* `zabbix_url_aliases`: A list with Aliases for the Apache Virtual Host configuration. 
+* `zabbix_url_aliases`: A list with Aliases for the Apache Virtual Host configuration.
 * `zabbix_timezone`: This is the timezone. The Apache Virtual Host needs this parameter. Default: Europe/Amsterdam
 * `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
-* `zabbix_web_max_execution_time`: 
-* `zabbix_web_memory_limit`: 
-* `zabbix_web_post_max_size`: 
-* `zabbix_web_upload_max_filesize`: 
+* `zabbix_web_max_execution_time`:
+* `zabbix_web_memory_limit`:
+* `zabbix_web_post_max_size`:
+* `zabbix_web_upload_max_filesize`:
 * `zabbix_web_max_input_time`:
 
 ### Zabbix Server
@@ -133,7 +133,7 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_server_dbuser`: The database username which is used by the Zabbix Server.
 * `zabbix_server_dbpassword`: The database user password which is used by the Zabbix Server.
 * `zabbix_server_dbport`: The database port which is used by the Zabbix Server.
- 
+
 ## Examples of configuration
 
 ### zabbix_repo_yum
