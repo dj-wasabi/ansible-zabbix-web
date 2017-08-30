@@ -15,25 +15,28 @@
   changed_when: False
   register: apachectl_version
   tags:
-    - always
+    - zabbix-web
+
+- debug:
+    var: apachectl_version
 
 - name: "Set correct apache_version"
   set_fact:
     apache_version: "{{ apachectl_version.stdout }}"
   tags:
-    - always
+    - zabbix-web
 
 - name: "Install the correct repository"
   include: "RedHat.yml"
   when: ansible_os_family == "RedHat"
   tags:
-    - always
+    - zabbix-web
 
 - name: "Install the correct repository"
   include: "Debian.yml"
   when: ansible_os_family == "Debian"
   tags:
-    - always
+    - zabbix-web
 
 - name: "Create zabbix-web directory"
   file:
