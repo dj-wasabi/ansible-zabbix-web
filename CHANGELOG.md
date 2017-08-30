@@ -4,9 +4,10 @@ Below an overview of all changes in the releases.
 
 Version (Release date)
 
-1.0.0
+1.0.0   (2017-08-30)
 
-  * Added tags 'always' on few tasks.
+  * Removed tags 'always' on few tasks.
+  * Fix for: Installing Zabbix-Web-MySQL Failed #1
 
 0.1.0   (2017-06-16)
 
