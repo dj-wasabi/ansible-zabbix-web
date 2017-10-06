@@ -10,6 +10,7 @@ agent_serveractive:
 zabbix_selinux: False
 
 zabbix_url: zabbix.example.com
+zabbix_apache_servername: "{{ zabbix_url | regex_findall('(?:https?\\://)?([\\w\\.]+)') | first }}"
 zabbix_url_aliases: []
 zabbix_apache_vhost_port: 80
 zabbix_timezone: Europe/Amsterdam
