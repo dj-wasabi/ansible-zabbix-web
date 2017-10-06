@@ -1,5 +1,5 @@
 <VirtualHost *:{{ zabbix_apache_vhost_port }}>
-  ServerName {{ zabbix_url }}
+  ServerName {{ zabbix_apache_servername }}
   {% for alias in zabbix_url_aliases %}
   ServerAlias {{ alias }}
   {% endfor %}
@@ -34,9 +34,9 @@
 
 {% endfor %}
   ## Logging
-  ErrorLog "/var/log/{{ apache_log }}/{{ zabbix_url }}_error.log"
+  ErrorLog "/var/log/{{ apache_log }}/{{ zabbix_apache_servername }}_error.log"
   ServerSignature Off
-  CustomLog "/var/log/{{ apache_log }}/{{ zabbix_url }}_access.log" combined
+  CustomLog "/var/log/{{ apache_log }}/{{ zabbix_apache_servername }}_access.log" combined
 
   ## Rewrite rules
   RewriteEngine On
