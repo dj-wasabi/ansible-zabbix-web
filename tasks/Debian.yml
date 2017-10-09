@@ -61,6 +61,16 @@
     - init
     - config
 
+- name: "Debian | Link graphfont.ttf (workaround ZBX-10467)"
+  file:
+    src: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf' # Part of ttf-dejavu-core package installed as dependencies
+    path: '/usr/share/zabbix/fonts/graphfont.ttf'
+    state: link
+  tags:
+    - zabbix-web
+    - init
+    - config
+
 - name: "Debian | install apache vhost"
   template:
     src: apache_vhost.conf.j2
