@@ -79,9 +79,9 @@ scenario:
     - prepare
     - converge
   test_sequence:
+    - dependency
     - lint
     - destroy
-    - dependency
     - syntax
     - create
     - prepare
