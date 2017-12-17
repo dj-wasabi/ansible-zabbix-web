@@ -17,9 +17,6 @@
   tags:
     - zabbix-web
 
-- debug:
-    var: apachectl_version
-
 - name: "Set correct apache_version"
   set_fact:
     apache_version: "{{ apachectl_version.stdout }}"

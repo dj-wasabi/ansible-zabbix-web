@@ -2,7 +2,7 @@
 // Zabbix GUI configuration file
 global $DB;
 
-$DB['TYPE']     = '{{ zabbix_server_database_long|upper() }}';
+$DB['TYPE']     = '{{ database_type_long|upper() }}';
 $DB['SERVER']   = '{{ zabbix_server_dbhost }}';
 $DB['PORT']     = '{{ zabbix_server_dbport }}';
 $DB['DATABASE'] = '{{ zabbix_server_dbname }}';
