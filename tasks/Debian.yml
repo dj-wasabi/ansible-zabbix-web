@@ -29,9 +29,9 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  when:
-    - ansible_distribution != 'Ubuntu'
-    - ansible_distribution_version | version_compare('16.04', '<')
+  when: >
+    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version | version_compare('16.04', '<')))
+    or ( ansible_distribution == 'Debian' and (ansible_distribution_version | version_compare('9.0', '<')) )
   tags:
     - zabbix-web
     - init
@@ -43,9 +43,9 @@
     update_cache: yes
     cache_valid_time: 3600
   with_items: "{{ ubuntu_packages }}"
-  when:
-    - ansible_distribution == 'Ubuntu'
-    - ansible_distribution_version | version_compare('16.04', '>=')
+  when: >
+    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version | version_compare('16.04', '>=')))
+    or ( ansible_distribution == 'Debian' and (ansible_distribution_version | version_compare('9.0', '>=')) )
   tags:
     - zabbix-server
     - init
@@ -56,6 +56,16 @@
     state: present
     update_cache: yes
     cache_valid_time: 0
+  tags:
+    - zabbix-web
+    - init
+    - config
+
+- name: "Debian | Link graphfont.ttf (workaround ZBX-10467)"
+  file:
+    src: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf' # Part of ttf-dejavu-core package installed as dependencies
+    path: '/usr/share/zabbix/fonts/graphfont.ttf'
+    state: link
   tags:
     - zabbix-web
     - init
