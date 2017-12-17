@@ -78,6 +78,17 @@ scenario:
     - create
     - prepare
     - converge
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - verify
+    - destroy
 
 verifier:
   name: testinfra
