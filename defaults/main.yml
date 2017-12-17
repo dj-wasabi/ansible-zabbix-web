@@ -36,8 +36,8 @@ zabbix_web_post_max_size: 16M
 zabbix_web_upload_max_filesize: 2M
 zabbix_web_max_input_time: 300
 
-zabbix_server_database: pgsql
-zabbix_server_database_long: postgresql
+database_type: pgsql
+database_type_long: postgresql
 
 zabbix_server_name: "{{ inventory_hostname }}"
 zabbix_server_hostname: "{{ inventory_hostname }}"
