@@ -6,7 +6,7 @@
 
 - name: "Set short version name"
   set_fact:
-      zabbix_short_version: "{{ zabbix_version | regex_replace('\\.', '') }}"
+    zabbix_short_version: "{{ zabbix_version | regex_replace('\\.', '') }}"
   tags:
     - always
 

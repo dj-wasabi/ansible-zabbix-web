@@ -18,29 +18,21 @@ platforms:
     privileged: True
     groups:
       - mysql
-    exposed_ports:
-       - "81:80"
   - name: zabbix-web-pgsql-centos
     image: milcom/centos7-systemd
     privileged: True
     groups:
       - postgresql
-    exposed_ports:
-       - "82:80"
   - name: zabbix-web-mysql-debian
     image: maint/debian-systemd
     privileged: True
     groups:
       - mysql
-    exposed_ports:
-       - "83:80"
   - name: zabbix-web-pgsql-debian
     image: maint/debian-systemd
     privileged: True
     groups:
       - postgresql
-    exposed_ports:
-       - "84:80"
 #  - name: zabbix-web-mysql-ubuntu
 #    image: solita/ubuntu-systemd
 #    privileged: True
