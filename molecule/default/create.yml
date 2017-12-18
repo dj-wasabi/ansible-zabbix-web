@@ -44,9 +44,6 @@
         privileged: "{{ item.privileged | default(omit) }}"
         volumes: "{{ item.volumes | default(omit) }}"
         capabilities: "{{ item.capabilities | default(omit) }}"
-        ports: "{{ item.exposed_ports | default(omit) }}"
-        etc_hosts:
-          zabbix.example.com: 127.0.0.1
       register: server
       with_items: "{{ molecule_yml.platforms }}"
       async: 7200
