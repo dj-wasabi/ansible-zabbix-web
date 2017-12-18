@@ -27,6 +27,7 @@
       with_items:
         - net-tools
         - python-pip
+        - curl
       when: ansible_distribution != 'CentOS'
 
     - name: "Configure SUDO."
