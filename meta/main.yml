@@ -8,20 +8,20 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-      - 6
-      - 7
+        - 6
+        - 7
     - name: Ubuntu
       versions:
-      - lucid
-      - precise
-      - trusty
+        - lucid
+        - precise
+        - trusty
     - name: Debian
       versions:
-      - squeeze
-      - wheezy
-      - jessie
-      - stretch
+        - squeeze
+        - wheezy
+        - jessie
+        - stretch
   categories:
     - monitoring
 dependencies:
-  - { name: geerlingguy.apache, src: geerlingguy.apache, tags: apache }
+  - {name: geerlingguy.apache, src: geerlingguy.apache, tags: apache}

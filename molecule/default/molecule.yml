@@ -1,0 +1,82 @@
+---
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: True
+    ignore-errors: True
+    role-file: requirements.yml
+
+driver:
+  name: docker
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/default/yaml-lint.yml
+platforms:
+  - name: zabbix-web-mysql-centos
+    image: milcom/centos7-systemd
+    privileged: True
+    groups:
+      - mysql
+  - name: zabbix-web-pgsql-centos
+    image: milcom/centos7-systemd
+    privileged: True
+    groups:
+      - postgresql
+  - name: zabbix-web-mysql-debian
+    image: maint/debian-systemd
+    privileged: True
+    groups:
+      - mysql
+  - name: zabbix-web-pgsql-debian
+    image: maint/debian-systemd
+    privileged: True
+    groups:
+      - postgresql
+
+#  - name: zabbix-web-mysql-ubuntu
+#    image: solita/ubuntu-systemd
+#    privileged: True
+#    groups:
+#      - mysql
+#  - name: zabbix-web-pgsql-ubuntu
+#    image: solita/ubuntu-systemd
+#    privileged: True
+#    groups:
+#      - postgresql
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    group_vars:
+      mysql:
+        database_type: mysql
+        database_type_long: mysql
+        server_dbport: 3306
+      postgresql:
+        database_type: pgsql
+        database_type_long: postgresql
+    host_vars:
+      zabbix-web-pgsql-debian:
+        zabbix_url: zabbix-web-pgsql-debian
+        zabbix_apache_servername: zabbix-web-pgsql-debian
+      zabbix-web-mysql-debian:
+        zabbix_url: zabbix-web-mysql-debian
+        zabbix_apache_servername: zabbix-web-mysql-debian
+      zabbix-web-pgsql-centos:
+        zabbix_url: zabbix-web-pgsql-centos
+        zabbix_apache_servername: zabbix-web-pgsql-centos
+      zabbix-web-mysql-centos:
+        zabbix_url: zabbix-web-mysql-centos
+        zabbix_apache_servername: zabbix-web-mysql-centos
+
+scenario:
+  name: default
+#x
+
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

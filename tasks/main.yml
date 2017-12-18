@@ -6,7 +6,7 @@
 
 - name: "Set short version name"
   set_fact:
-      zabbix_short_version: "{{ zabbix_version | regex_replace('\\.', '') }}"
+    zabbix_short_version: "{{ zabbix_version | regex_replace('\\.', '') }}"
   tags:
     - always
 
@@ -16,9 +16,6 @@
   register: apachectl_version
   tags:
     - zabbix-web
-
-- debug:
-    var: apachectl_version
 
 - name: "Set correct apache_version"
   set_fact:
