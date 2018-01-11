@@ -72,6 +72,12 @@ provisioner:
       zabbix-web-mysql-centos:
         zabbix_url: zabbix-web-mysql-centos
         zabbix_apache_servername: zabbix-web-mysql-centos
+      zabbix-web-mysql-ubuntu:
+        zabbix_url: zabbix-web-mysql-ubuntu
+        zabbix_apache_servername: zabbix-web-mysql-ubuntu
+      zabbix-web-pgsql-ubuntu:
+        zabbix_url: zabbix-web-pgsql-ubuntu
+        zabbix_apache_servername: zabbix-web-pgsql-ubuntu
 
 scenario:
   name: default
