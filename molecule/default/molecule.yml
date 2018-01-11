@@ -33,17 +33,18 @@ platforms:
     privileged: True
     groups:
       - postgresql
-
-#  - name: zabbix-web-mysql-ubuntu
-#    image: solita/ubuntu-systemd
-#    privileged: True
-#    groups:
-#      - mysql
-#  - name: zabbix-web-pgsql-ubuntu
-#    image: solita/ubuntu-systemd
-#    privileged: True
-#    groups:
-#      - postgresql
+  - name: zabbix-web-mysql-ubuntu
+    image: solita/ubuntu-systemd:latest
+    privileged: True
+    command: /sbin/init
+    groups:
+      - mysql
+  - name: zabbix-web-pgsql-ubuntu
+    image: solita/ubuntu-systemd:latest
+    privileged: True
+    command: /sbin/init
+    groups:
+      - postgresql
 
 provisioner:
   name: ansible
@@ -71,6 +72,12 @@ provisioner:
       zabbix-web-mysql-centos:
         zabbix_url: zabbix-web-mysql-centos
         zabbix_apache_servername: zabbix-web-mysql-centos
+      zabbix-web-mysql-ubuntu:
+        zabbix_url: zabbix-web-mysql-ubuntu
+        zabbix_apache_servername: zabbix-web-mysql-ubuntu
+      zabbix-web-pgsql-ubuntu:
+        zabbix_url: zabbix-web-pgsql-ubuntu
+        zabbix_apache_servername: zabbix-web-pgsql-ubuntu
 
 scenario:
   name: default
