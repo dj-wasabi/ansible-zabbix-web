@@ -36,6 +36,8 @@ zabbix_web_post_max_size: 16M
 zabbix_web_upload_max_filesize: 2M
 zabbix_web_max_input_time: 300
 
+zabbix_web_env: []
+
 database_type: pgsql
 database_type_long: postgresql
 
