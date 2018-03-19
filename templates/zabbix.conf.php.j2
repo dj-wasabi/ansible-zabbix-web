@@ -17,4 +17,8 @@ $ZBX_SERVER_PORT = '{{ zabbix_server_listenport }}';
 $ZBX_SERVER_NAME = '{{ zabbix_server_name }}';
 
 $IMAGE_FORMAT_DEFAULT = IMAGE_FORMAT_PNG;
+
+{% for env,val in zabbix_web_env.iteritems() %}
+putenv("{{env}}={{val}}")
+{% endfor %}
 ?>

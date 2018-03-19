@@ -120,6 +120,7 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_web_post_max_size`:
 * `zabbix_web_upload_max_filesize`:
 * `zabbix_web_max_input_time`:
+* `zabbix_web_env`: (Optional) A Dictionary of PHP Environments
 
 ### Zabbix Server
 
@@ -178,8 +179,8 @@ When there is one host running both Zabbix Server and the Zabbix Web (Running My
   become: yes
   roles:
      - { role: geerlingguy.apache }
-     - { role: dj-wasabi.zabbix-server, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
-     - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
+     - { role: zabbix_server, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
+     - { role: zabbix_web, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306}
 ```
 
 ## Multi host setup
@@ -190,14 +191,24 @@ This is a 2 host setup. On 1 host (Named: zabbix-server)the Zabbix Server is run
 - hosts: zabbix-server
   become: yes
   roles:
-     - { role: dj-wasabi.zabbix-server, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
+     - { role: zabbix_server, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
 
 - hosts: zabbix-web
   become: yes
   roles:
      - { role: geerlingguy.apache }
-     - { role: dj-wasabi.zabbix-web, zabbix_server_hostname: zabbix-server, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
+     - { role: zabbix_web, zabbix_server_hostname: zabbix-server, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
 ```
+
+## Adding Environment Variables for zabbix_web
+
+Sometimes you need to add environment variables to your
+zabbix.conf.php for example to add LDAP CA Certificates. To do this add a `zabbix_web_env` dictionary.
+
+```
+- { role: zabbix_web, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
+```
+
 
 # Molecule
 
