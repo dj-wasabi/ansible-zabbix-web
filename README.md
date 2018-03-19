@@ -120,6 +120,7 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_web_post_max_size`:
 * `zabbix_web_upload_max_filesize`:
 * `zabbix_web_max_input_time`:
+* `zabbix_web_env`: A Dictionary of PHP Environments
 
 ### Zabbix Server
 
