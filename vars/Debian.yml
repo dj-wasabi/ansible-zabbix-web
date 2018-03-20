@@ -10,3 +10,4 @@ ubuntu_packages:
   - php7.0-ldap
   - php7.0-{{ database_type }}
   - php7.0-xml
+  - php7.0-gd
