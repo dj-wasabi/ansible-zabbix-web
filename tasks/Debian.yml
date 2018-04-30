@@ -30,8 +30,8 @@
     update_cache: yes
     cache_valid_time: 3600
   when: >
-    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version | version_compare('16.04', '<')))
-    or ( ansible_distribution == 'Debian' and (ansible_distribution_version | version_compare('9.0', '<')) )
+    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '<')))
+    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '<')) )
   tags:
     - zabbix-web
     - init
@@ -44,8 +44,8 @@
     cache_valid_time: 3600
   with_items: "{{ ubuntu_packages }}"
   when: >
-    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version | version_compare('16.04', '>=')))
-    or ( ansible_distribution == 'Debian' and (ansible_distribution_version | version_compare('9.0', '>=')) )
+    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '>=')))
+    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '>=')) )
   tags:
     - zabbix-server
     - init
