@@ -23,14 +23,16 @@ platforms:
     privileged: True
     groups:
       - postgresql
-  - name: zabbix-web-mysql-debian
-    image: maint/debian-systemd
-    privileged: True
-    groups:
-      - mysql
   - name: zabbix-web-pgsql-debian
-    image: maint/debian-systemd
+    image: minimum2scp/systemd-stretch
     privileged: True
+    command: /sbin/init
+    groups:
+      - postgresql
+  - name: zabbix-web-pgsql-debian
+    image: minimum2scp/systemd-stretch
+    privileged: True
+    command: /sbin/init
     groups:
       - postgresql
   - name: zabbix-web-mysql-ubuntu
@@ -53,12 +55,12 @@ provisioner:
   inventory:
     group_vars:
       mysql:
-        database_type: mysql
-        database_type_long: mysql
-        server_dbport: 3306
+        zabbix_server_database: mysql
+        zabbix_server_database_long: mysql
+        zabbix_server_dbport: 3306
       postgresql:
-        database_type: pgsql
-        database_type_long: postgresql
+        zabbix_server_database: pgsql
+        zabbix_server_database_long: postgresql
     host_vars:
       zabbix-web-pgsql-debian:
         zabbix_url: zabbix-web-pgsql-debian

@@ -5,13 +5,13 @@
     - name: "Installing EPEL"
       yum:
         name: epel-release
-        state: installed
+        state: present
       when: ansible_distribution == 'CentOS'
 
     - name: "Installing packages"
       yum:
         name: "{{ item }}"
-        state: installed
+        state: present
       with_items:
         - net-tools
         - which
@@ -23,7 +23,7 @@
     - name: "Installing which on NON-CentOS"
       apt:
         name: "{{ item }}"
-        state: installed
+        state: present
       with_items:
         - net-tools
         - python-pip
