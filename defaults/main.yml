@@ -13,8 +13,14 @@ zabbix_url: zabbix.example.com
 zabbix_apache_servername: "{{ zabbix_url | regex_findall('(?:https?\\://)?([\\w\\.]+)') | first }}"
 zabbix_url_aliases: []
 zabbix_apache_vhost_port: 80
+zabbix_apache_vhost_tls_port: 443
 zabbix_timezone: Europe/Amsterdam
 zabbix_vhost: True
+zabbix_apache_tls: False
+zabbix_apache_redirect: False
+zabbix_apache_tls_crt: /etc/pki/server.crt
+zabbix_apache_tls_key: /etc/pki/server.key
+zabbix_apache_tls_chain:
 
 zabbix_repo_yum:
   - name: zabbix
