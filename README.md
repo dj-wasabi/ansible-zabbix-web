@@ -51,6 +51,16 @@ Please sent Pull Requests or suggestions when you want to use this role for othe
 
 See the following list of supported Operating systems with the Zabbix releases.
 
+### Zabbix 3.4
+
+  * CentOS 7.x
+  * Amazon 7.x
+  * RedHat 7.x
+  * OracleLinux 7.x
+  * Scientific Linux 7.x
+  * Ubuntu 14.04, 16.04, 18.04
+  * Debian 7, 8, 9
+
 ### Zabbix 3.2
 
   * CentOS 7.x
@@ -114,6 +124,13 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_url_aliases`: A list with Aliases for the Apache Virtual Host configuration.
 * `zabbix_timezone`: This is the timezone. The Apache Virtual Host needs this parameter. Default: Europe/Amsterdam
 * `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
+* `zabbix_apache_vhost_port`: The port on which Zabbix HTTP vhost is running.
+* `zabbix_apache_vhost_tls_port`: The port on which Zabbix HTTPS vhost is running.
+* `zabbix_apache_tls`: If the Apache vhost should be configured with SSL configuration or not.
+* `zabbix_apache_redirect`: If a redirect should take place from http to https
+* `zabbix_apache_tls_crt`: The path to the SSL certificate file.
+* `zabbix_apache_tls_key`: The path to the SSL key file.
+* `zabbix_apache_tls_chain`: The path to the SSL certificate chain file.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:
@@ -121,6 +138,8 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_web_upload_max_filesize`:
 * `zabbix_web_max_input_time`:
 * `zabbix_web_env`: (Optional) A Dictionary of PHP Environments
+
+NOTE: When `zabbix_apache_tls_crt`, `zabbix_apache_tls_key` and/or `zabbix_apache_tls_chain` are used, make sure that these files exists before executing this role. The Zabbix-Web role will not install the mentioned files.
 
 ### Zabbix Server
 
