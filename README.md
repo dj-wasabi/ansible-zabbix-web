@@ -26,9 +26,9 @@ Build Status:
 
 [![Build Status](https://travis-ci.org/dj-wasabi/ansible-zabbix-web.svg?branch=master)](https://travis-ci.org/dj-wasabi/ansible-zabbix-web)
 
-This is a role for installing and maintaining the zabbix-web, the web UI for the zabbix-server.
+This is a role for installing and maintaining zabbix-web, the web UI for the zabbix-server.
 
-This is one of the 'dj-wasabi' roles which configures your whole zabbix environment. See an list for the complete list:
+This is one of the 'dj-wasabi' roles which configures your whole zabbix environment. See the complete list:
 
  * zabbix-web (https://galaxy.ansible.com/dj-wasabi/zabbix-web/)
  * zabbix-server (https://galaxy.ansible.com/dj-wasabi/zabbix-server/)
@@ -37,20 +37,20 @@ This is one of the 'dj-wasabi' roles which configures your whole zabbix environm
  * zabbix-agent (https://galaxy.ansible.com/dj-wasabi/zabbix-agent/)
 
 # Requirements
-## Operating systems
+## Operating Systems
 
 This role will work on the following operating systems:
 
- * Red Hat
+ * RedHat
  * Debian
  * Ubuntu
 
 So, you'll need one of those operating systems.. :-)
-Please sent Pull Requests or suggestions when you want to use this role for other Operating systems.
+Please sent Pull Requests or suggestions when you want to use this role for other Operating Systems.
 
 ## Zabbix Versions
 
-See the following list of supported Operating systems with the Zabbix releases.
+See the following list of supported Operating Systems with the Zabbix releases.
 
 ### [Zabbix 3.4](zabbix-34)
 
@@ -112,7 +112,7 @@ When the Zabbix Web needs to be running on the same host as the Zabbix Server, p
 
 ## Main variables
 
-The following is an overview of all available configuration default for this role.
+The following is an overview of all available configuration defaults for this role.
 
 ### Overall Zabbix
 
@@ -127,11 +127,11 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
 * `zabbix_apache_vhost_port`: The port on which Zabbix HTTP vhost is running.
 * `zabbix_apache_vhost_tls_port`: The port on which Zabbix HTTPS vhost is running.
-* `zabbix_apache_tls`: If the Apache vhost should be configured with SSL configuration or not.
-* `zabbix_apache_redirect`: If a redirect should take place from http to https
-* `zabbix_apache_tls_crt`: The path to the SSL certificate file.
-* `zabbix_apache_tls_key`: The path to the SSL key file.
-* `zabbix_apache_tls_chain`: The path to the SSL certificate chain file.
+* `zabbix_apache_tls`: If the Apache vhost should be configured with TLS encryption or not.
+* `zabbix_apache_redirect`: If a redirect should take place from HTTP to HTTPS
+* `zabbix_apache_tls_crt`: The path to the TLS certificate file.
+* `zabbix_apache_tls_key`: The path to the TLS key file.
+* `zabbix_apache_tls_chain`: The path to the TLS certificate chain file.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:
@@ -179,13 +179,13 @@ zabbix_repo_yum:
 
 # Dependencies
 
-This role has 1 "hardcoded" dependency: geerlingguy.apache.
+This role has one "hardcoded" dependency: geerlingguy.apache.
 
 As it is also possible to run the zabbix-web on a different host than the zabbix-server, the zabbix-server is not configured to be an dependency.
 
 # Example Playbook
 
-There are 2 ways for using the zabbix-web:
+There are two ways of using the zabbix-web:
 
 * Single instance
 * Multi host setup
@@ -205,7 +205,7 @@ When there is one host running both Zabbix Server and the Zabbix Web (Running My
 
 ## Multi host setup
 
-This is a 2 host setup. On 1 host (Named: zabbix-server)the Zabbix Server is running and 1 host (Named: zabbix-web) where the Zabbix Web is running (Running MySQL as database):
+This is a two host setup. On one host (Named: "zabbix-server") the Zabbix Server is running, and the other host (Named: zabbix-web) runs Zabbix Web (with MySQL as database):
 
 ```
 - hosts: zabbix-server
@@ -223,7 +223,7 @@ This is a 2 host setup. On 1 host (Named: zabbix-server)the Zabbix Server is run
 ## Adding Environment Variables for zabbix_web
 
 Sometimes you need to add environment variables to your
-zabbix.conf.php for example to add LDAP CA Certificates. To do this add a `zabbix_web_env` dictionary.
+zabbix.conf.php, for example to add LDAP CA certificates. To do this add a `zabbix_web_env` dictionary:
 
 ```
 - { role: zabbix_web, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
@@ -232,8 +232,8 @@ zabbix.conf.php for example to add LDAP CA Certificates. To do this add a `zabbi
 
 # Molecule
 
-This role is configured to be tested with Molecule. Molecule will boot at least 3 different kind of containers, each of the supported Operating System (Debian, Ubuntu and Red Hat).
-Pull Requests are only merged when the tests are succeeding.
+This role is configured to be tested with Molecule. Molecule will boot at least 3 different kinds of containers, one for each supported Operating System (Debian, Ubuntu and RedHat).
+Pull Requests are only merged when the tests are successful.
 
 For more information, please check the following page: https://www.werner-dijkerman.nl/2016/07/10/testing-ansible-roles-with-molecule-testinfra-and-docker
 
