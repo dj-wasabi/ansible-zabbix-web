@@ -83,7 +83,6 @@ provisioner:
 
 scenario:
   name: default
-#x
 
 verifier:
   name: testinfra

@@ -72,7 +72,7 @@
 
 - name: "Debian | Link graphfont.ttf (workaround ZBX-10467)"
   file:
-    src: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf' # Part of ttf-dejavu-core package installed as dependencies
+    src: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
     path: '/usr/share/zabbix/fonts/graphfont.ttf'
     state: link
   tags:
