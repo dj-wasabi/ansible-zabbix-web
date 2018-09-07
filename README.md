@@ -239,7 +239,7 @@ For more information, please check the following page: https://www.werner-dijker
 
 # License
 
-GPLv3
+MIT
 
 # Author Information
 
