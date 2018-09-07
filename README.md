@@ -127,11 +127,6 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_vhost`: True / False. When you don't want to create an Apache Virtual Host configuration, you can set it to False.
 * `zabbix_apache_vhost_port`: The port on which Zabbix HTTP vhost is running.
 * `zabbix_apache_vhost_tls_port`: The port on which Zabbix HTTPS vhost is running.
-* `zabbix_apache_tls`: If the Apache vhost should be configured with TLS encryption or not.
-* `zabbix_apache_redirect`: If a redirect should take place from HTTP to HTTPS
-* `zabbix_apache_tls_crt`: The path to the TLS certificate file.
-* `zabbix_apache_tls_key`: The path to the TLS key file.
-* `zabbix_apache_tls_chain`: The path to the TLS certificate chain file.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:
@@ -140,7 +135,21 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_web_max_input_time`:
 * `zabbix_web_env`: (Optional) A Dictionary of PHP Environments
 
-NOTE: When `zabbix_apache_tls_crt`, `zabbix_apache_tls_key` and/or `zabbix_apache_tls_chain` are used, make sure that these files exists before executing this role. The Zabbix-Web role will not install the mentioned files.
+The following properties are related when TLS/SSL is configured:
+
+* `zabbix_apache_tls`: If the Apache vhost should be configured with TLS encryption or not.
+* `zabbix_apache_redirect`: If a redirect should take place from HTTP to HTTPS
+* `zabbix_apache_tls_crt`: The path to the TLS certificate file.
+* `zabbix_apache_tls_key`: The path to the TLS key file.
+* `zabbix_apache_tls_chain`: The path to the TLS certificate chain file.
+* `zabbix_apache_SSLPassPhraseDialog`: Type of pass phrase dialog for encrypted private keys.
+* `zabbix_apache_SSLSessionCache`: Type of the global/inter-process SSL Session Cache
+* `zabbix_apache_SSLSessionCacheTimeout`: Number of seconds before an SSL session expires in the Session Cache
+* `zabbix_apache_SSLCryptoDevice`: Enable use of a cryptographic hardware accelerator
+
+When `zabbix_apache_tls_crt`, `zabbix_apache_tls_key` and/or `zabbix_apache_tls_chain` are used, make sure that these files exists before executing this role. The Zabbix-Web role will not install the mentioned files.
+
+See https://httpd.apache.org/docs/current/mod/mod_ssl.html for SSL* configuration options for Apache HTTPD.
 
 ### Zabbix Server
 
