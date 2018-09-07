@@ -61,12 +61,12 @@
 {# Set up TLS vhosts #}
 {% if zabbix_apache_tls and zabbix_apache_vhost_tls_port %}
 
-SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
-SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
-SSLSessionCacheTimeout  300
+SSLPassPhraseDialog {{ zabbix_apache_SSLPassPhraseDialog }}
+SSLSessionCache         {{ zabbix_apache_SSLSessionCache }}
+SSLSessionCacheTimeout  {{ zabbix_apache_SSLSessionCacheTimeout }}
 SSLRandomSeed startup file:/dev/urandom  256
 SSLRandomSeed connect builtin
-SSLCryptoDevice builtin
+SSLCryptoDevice {{ zabbix_apache_SSLCryptoDevice }}
 
 <VirtualHost _default_:{{ zabbix_apache_vhost_tls_port }}>
   ServerName {{ zabbix_apache_servername }}
