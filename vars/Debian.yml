@@ -8,6 +8,6 @@ ubuntu_packages:
   - php-bcmath
   - php-mbstring
   - php-ldap
-  - php-{{ database_type }}
+  - php-{{ zabbix_server_database }}
   - php-xml
   - php-gd

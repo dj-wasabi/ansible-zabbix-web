@@ -2,20 +2,27 @@ Table of Contents
 
 - [Overview](#overview)
 - [Requirements](#requirements)
-  - [Operating systems](#operating-systems)
-  - [Zabbix Versions](#zabbix-versions)
-    - [Zabbix 3.4](#zabbix-34)
-    - [Zabbix 3.2](#zabbix-32)
-    - [Zabbix 3.0](#zabbix-30)
-    - [Zabbix 2.4](#zabbix-24)
-    - [Zabbix 2.2](#zabbix-22)
+  * [Operating Systems](#operating-systems)
+  * [Zabbix Versions](#zabbix-versions)
+    + [[Zabbix 4.0](zabbix-40)](#-zabbix-40--zabbix-40-)
+    + [[Zabbix 3.4](zabbix-34)](#-zabbix-34--zabbix-34-)
+    + [[Zabbix 3.2](zabbix-32)](#-zabbix-32--zabbix-32-)
+    + [[Zabbix 3.0](zabbix-32)](#-zabbix-30--zabbix-32-)
+    + [[Zabbix 2.4](zabbix-24)](#-zabbix-24--zabbix-24-)
+    + [[Zabbix 2.2](zabbix-22)](#-zabbix-22--zabbix-22-)
 - [Installation](#installation)
 - [Role Variables](#role-variables)
-  - [Main variables](#main-variables)
+  * [Main variables](#main-variables)
+    + [Overall Zabbix](#overall-zabbix)
+    + [Zabbix Web specific](#zabbix-web-specific)
+    + [Zabbix Server](#zabbix-server)
+  * [Examples of configuration](#examples-of-configuration)
+    + [zabbix_repo_yum](#zabbix-repo-yum)
 - [Dependencies](#dependencies)
 - [Example Playbook](#example-playbook)
-  - [Single instance](#single-instance)
-  - [Multi host setup](#multi-host-setup)
+  * [Single instance](#single-instance)
+  * [Multi host setup](#multi-host-setup)
+  * [Adding Environment Variables for zabbix_web](#adding-environment-variables-for-zabbix-web)
 - [Molecule](#molecule)
 - [License](#license)
 - [Author Information](#author-information)
@@ -52,7 +59,7 @@ Please sent Pull Requests or suggestions when you want to use this role for othe
 
 See the following list of supported Operating Systems with the Zabbix releases.
 
-### [Zabbix 3.4](zabbix-34)
+### Zabbix 4.0
 
   * CentOS 7.x
   * Amazon 7.x
@@ -60,9 +67,19 @@ See the following list of supported Operating Systems with the Zabbix releases.
   * OracleLinux 7.x
   * Scientific Linux 7.x
   * Ubuntu 14.04, 16.04, 18.04
+  * Debian 8, 9
+
+### Zabbix 3.4
+
+  * CentOS 7.x
+  * Amazon 7.x
+  * RedHat 7.x
+  * OracleLinux 7.x
+  * Scientific Linux 7.x
+  * Ubuntu 14.04, 16.04
   * Debian 7, 8, 9
 
-### [Zabbix 3.2](zabbix-32)
+### Zabbix 3.2
 
   * CentOS 7.x
   * Amazon 7.x
@@ -72,7 +89,7 @@ See the following list of supported Operating Systems with the Zabbix releases.
   * Ubuntu 14.04, 16.04
   * Debian 7, 8
 
-### [Zabbix 3.0](zabbix-32)
+### Zabbix 3.0
 
   * CentOS 5.x, 6.x, 7.x
   * Amazon 5.x, 6.x, 7.x
@@ -82,7 +99,7 @@ See the following list of supported Operating Systems with the Zabbix releases.
   * Ubuntu 14.04
   * Debian 7, 8
 
-### [Zabbix 2.4](zabbix-24)
+### Zabbix 2.4
 
   * CentOS 6.x, 7.x
   * Amazon 6.x, 7.x
@@ -92,7 +109,7 @@ See the following list of supported Operating Systems with the Zabbix releases.
   * Ubuntu 12.04 14.04
   * Debian 7
 
-### [Zabbix 2.2](zabbix-22)
+### Zabbix 2.2
 
   * CentOS 5.x, 6.x
   * RedHat 5.x, 6.x

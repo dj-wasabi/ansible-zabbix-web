@@ -32,9 +32,9 @@
     - init
     - config
 
-- name: "Debian | Install php5-{{ database_type }}"
+- name: "Debian | Install php5-{{ zabbix_server_database }}"
   apt:
-    pkg: php5-{{ database_type }}
+    pkg: php5-{{ zabbix_server_database }}
     state: present
     update_cache: yes
     cache_valid_time: 3600
@@ -45,7 +45,7 @@
     - zabbix-web
     - init
 
-- name: "Ubuntu | Install php7-{{ database_type }}"
+- name: "Ubuntu | Install php7-{{ zabbix_server_database }}"
   apt:
     pkg: "{{ item }}"
     state: present

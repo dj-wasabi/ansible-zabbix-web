@@ -4,6 +4,14 @@ Below an overview of all changes in the releases.
 
 Version (Release date)
 
+1.2.0   (2018-09-11)
+
+  * Updated supported versions #27
+  * Readme lang typos grammar #28 (By pull request: dnmvisser (Thanks!))
+  * Reflect license change to MIT in README #29 (By pull request: stephankn (Thanks!))
+  * Fix for #24 #30
+  * Fix for: SSLPassPhraseDialog setting problems - /usr/libexec/httpd-ss… #31
+
 1.1.0   (2018-06-23)
 
   * added support for HTTPS #25 (By pull request: q1x (Thanks!))
