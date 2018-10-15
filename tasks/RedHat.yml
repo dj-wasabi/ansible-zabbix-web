@@ -16,7 +16,7 @@
 - name: "RedHat | Install zabbix-web-{{ zabbix_server_database }}"
   yum:
     pkg: zabbix-web-{{ zabbix_server_database }}
-    state: "{{ zabbix_server_package_state }}"
+    state: "{{ zabbix_web_package_state }}"
   tags:
     - zabbix-web
 
