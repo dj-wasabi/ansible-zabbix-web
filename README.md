@@ -135,6 +135,7 @@ The following is an overview of all available configuration defaults for this ro
 
 * `zabbix_version`: This is the version of zabbix. Default: 3.4. Can be overridden to 3.2, 3.0, 2.4, or 2.2.
 * `zabbix_repo_yum`: A list with Yum repository configuration.
+* `zabbix_web_package_state`: Default: _present_. Can be overridden to "latest" to update packages when needed.
 
 ### Zabbix Web specific
 
