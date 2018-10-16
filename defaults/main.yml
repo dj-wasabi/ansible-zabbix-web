@@ -3,10 +3,7 @@
 
 zabbix_version: 4.0
 zabbix_repo: zabbix
-zabbix_agent_package: zabbix-agent
-zabbix_agent_package_state: present
-agent_server:
-agent_serveractive:
+zabbix_web_package_state: present
 zabbix_selinux: False
 
 zabbix_url: zabbix.example.com
