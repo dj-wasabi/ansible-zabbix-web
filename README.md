@@ -4,12 +4,12 @@ Table of Contents
 - [Requirements](#requirements)
   * [Operating Systems](#operating-systems)
   * [Zabbix Versions](#zabbix-versions)
-    + [[Zabbix 4.0](zabbix-40)](#-zabbix-40--zabbix-40-)
-    + [[Zabbix 3.4](zabbix-34)](#-zabbix-34--zabbix-34-)
-    + [[Zabbix 3.2](zabbix-32)](#-zabbix-32--zabbix-32-)
-    + [[Zabbix 3.0](zabbix-32)](#-zabbix-30--zabbix-32-)
-    + [[Zabbix 2.4](zabbix-24)](#-zabbix-24--zabbix-24-)
-    + [[Zabbix 2.2](zabbix-22)](#-zabbix-22--zabbix-22-)
+    + [Zabbix 4.0](#zabbix-40)
+    + [Zabbix 3.4](#zabbix-34)
+    + [Zabbix 3.2](#zabbix-32)
+    + [Zabbix 3.0](#zabbix-30)
+    + [Zabbix 2.4](#zabbix-24)
+    + [Zabbix 2.2](#zabbix-22)
 - [Installation](#installation)
 - [Role Variables](#role-variables)
   * [Main variables](#main-variables)
@@ -225,8 +225,8 @@ When there is one host running both Zabbix Server and the Zabbix Web (Running My
   become: yes
   roles:
      - { role: geerlingguy.apache }
-     - { role: zabbix_server, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
-     - { role: zabbix_web, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306}
+     - { role: dj-wasabi.zabbix-server, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
+     - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, database_type_long: mysql, zabbix_server_dbport: 3306}
 ```
 
 ## Multi host setup
@@ -237,13 +237,13 @@ This is a two host setup. On one host (Named: "zabbix-server") the Zabbix Server
 - hosts: zabbix-server
   become: yes
   roles:
-     - { role: zabbix_server, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
+     - { role: dj-wasabi.zabbix-server, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
 
 - hosts: zabbix-web
   become: yes
   roles:
      - { role: geerlingguy.apache }
-     - { role: zabbix_web, zabbix_server_hostname: zabbix-server, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306 }
+     - { role: dj-wasabi.zabbix-web, zabbix_server_hostname: zabbix-server, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
 ```
 
 ## Adding Environment Variables for zabbix_web
@@ -252,7 +252,7 @@ Sometimes you need to add environment variables to your
 zabbix.conf.php, for example to add LDAP CA certificates. To do this add a `zabbix_web_env` dictionary:
 
 ```
-- { role: zabbix_web, zabbix_url: zabbix.dj-wasabi.nl, database_type: mysql, database_type_long: mysql, server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
+- { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
 ```
 
 
