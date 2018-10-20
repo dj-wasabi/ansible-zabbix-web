@@ -227,7 +227,7 @@ When there is one host running both Zabbix Server and the Zabbix Web (Running My
   roles:
      - { role: geerlingguy.apache }
      - { role: dj-wasabi.zabbix-server, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
-     - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, database_type_long: mysql, zabbix_server_dbport: 3306}
+     - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306}
 ```
 
 ## Multi host setup
