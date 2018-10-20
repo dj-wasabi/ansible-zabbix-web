@@ -4,6 +4,12 @@ Below an overview of all changes in the releases.
 
 Version (Release date)
 
+1.3.0   (2018-10-20)
+
+  * Add zabbix 40 #33
+  * Modify use of zabbix server packages #35 (By pull request: average-joe (Thanks!))
+  * Fix for: update readme to include correct examples #32
+
 1.2.0   (2018-09-11)
 
   * Updated supported versions #27
