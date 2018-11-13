@@ -30,7 +30,7 @@
 {% for my_path in directory_paths %}
   <Directory "{{ my_path }}">
   {% if apache_version|string() == '2.4' %}
-    Require all granted
+    Require all denied
   {% else %}
     AllowOverride None
     Order Deny,Allow
