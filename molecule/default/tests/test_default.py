@@ -36,7 +36,7 @@ def test_zabbix_web(File, SystemInfo):
     elif SystemInfo.distribution == 'centos':
         assert zabbix_web.user == "apache"
         assert zabbix_web.group == "apache"
-    assert zabbix_web.mode == 0o644
+    assert zabbix_web.mode == 0o640
 
 
 def test_zabbix_api(host):

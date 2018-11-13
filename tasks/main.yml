@@ -53,7 +53,7 @@
     dest: /etc/zabbix/web/zabbix.conf.php
     owner: "{{ apache_user }}"
     group: "{{ apache_group }}"
-    mode: 0644
+    mode: 0640
   notify:
     - restart apache
   tags:
