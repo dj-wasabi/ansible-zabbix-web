@@ -21,7 +21,9 @@ galaxy_info:
         - wheezy
         - jessie
         - stretch
-  categories:
+  galaxy_tags:
     - monitoring
+    - zabbix
+
 dependencies:
   - {name: geerlingguy.apache, src: geerlingguy.apache, tags: apache}

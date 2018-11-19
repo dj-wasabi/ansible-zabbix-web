@@ -7,10 +7,10 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
-@pytest.mark.parametrize("server, redhat, debian", (
+@pytest.mark.parametrize("server, redhat, debian", [
         ("zabbix-server-pgsql", "zabbix-web-pgsql", "zabbix-frontend-php"),
         ("zabbix-server-mysql", "zabbix-web-mysql", "zabbix-frontend-php"),
-))
+])
 def test_zabbix_package(Package, TestinfraBackend, server, redhat, debian, SystemInfo):
     host = TestinfraBackend.get_hostname()
     host = host.replace("-centos", "")
