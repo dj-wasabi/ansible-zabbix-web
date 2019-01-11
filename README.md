@@ -186,7 +186,7 @@ See https://httpd.apache.org/docs/current/mod/mod_ssl.html for SSL* configuratio
 
 ### zabbix_repo_yum
 
-Current default configuration and example for  
+Current default configuration and example for specifying a yum repository:
 
 ````
 zabbix_repo_yum:
@@ -226,8 +226,8 @@ When there is one host running both Zabbix Server and the Zabbix Web (Running My
   become: yes
   roles:
      - { role: geerlingguy.apache }
-     - { role: dj-wasabi.zabbix-server, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
-     - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306}
+     - { role: dj-wasabi.zabbix-server, zabbix_server_database: mysql, zabbix_server_database_long: mysql, zabbix_server_dbport: 3306 }
+     - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database: mysql, zabbix_server_database_long: mysql, zabbix_server_dbport: 3306}
 ```
 
 ## Multi host setup
@@ -238,13 +238,13 @@ This is a two host setup. On one host (Named: "zabbix-server") the Zabbix Server
 - hosts: zabbix-server
   become: yes
   roles:
-     - { role: dj-wasabi.zabbix-server, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
+     - { role: dj-wasabi.zabbix-server, zabbix_server_database: mysql, zabbix_server_database_long: mysql, zabbix_server_dbport: 3306 }
 
 - hosts: zabbix-web
   become: yes
   roles:
      - { role: geerlingguy.apache }
-     - { role: dj-wasabi.zabbix-web, zabbix_server_hostname: zabbix-server, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306 }
+     - { role: dj-wasabi.zabbix-web, zabbix_server_hostname: zabbix-server, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database: mysql, zabbix_server_database_long: mysql, zabbix_server_dbport: 3306 }
 ```
 
 ## Adding Environment Variables for zabbix_web
@@ -253,7 +253,7 @@ Sometimes you need to add environment variables to your
 zabbix.conf.php, for example to add LDAP CA certificates. To do this add a `zabbix_web_env` dictionary:
 
 ```
-- { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database_type: mysql, zabbix_server_database_type_long: mysql, zabbix_server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
+- { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database: mysql, zabbix_server_database_long: mysql, zabbix_server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
 ```
 
 
