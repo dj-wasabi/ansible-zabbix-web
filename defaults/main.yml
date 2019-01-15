@@ -57,15 +57,15 @@ zabbix_server_dbpassword: zabbix-server
 zabbix_server_dbport: 5432
 
 # Elasticsearch
-# zabbix_server_history_url: 
+# zabbix_server_history_url:
 #  - "'uint' => 'http://localhost:9200'"
 #  - "'text' => 'http://localhost:9200'"
 #  - "'log' => 'http://localhost:9200'"
 #  - "'dbl' => 'http://localhost:9200'"
 #  - "'str' => 'http://localhost:9200'"
-zabbix_server_history_types: 
-  - str
-  - text
-  - log 
-  - uint
-  - dbl
+zabbix_server_history_types:
+  - 'str'
+  - 'text'
+  - 'log'
+  - 'uint'
+  - 'dbl'
