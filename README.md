@@ -182,6 +182,15 @@ See https://httpd.apache.org/docs/current/mod/mod_ssl.html for SSL* configuratio
 * `zabbix_server_dbpassword`: The database user password which is used by the Zabbix Server.
 * `zabbix_server_dbport`: The database port which is used by the Zabbix Server.
 
+The following properties are related when using Elasticsearch for history storage:
+
+* `zabbix_server_history_url`: String with url to the Elasticsearch server or a list  if the types are stored on different Elasticsearch URLs.
+* `zabbix_server_history_types`: List of history types to store in Elasticsearch.
+
+See the following links for more information regarding Zabbix and Elasticsearch
+https://www.zabbix.com/documentation/3.4/manual/appendix/install/elastic_search_setup
+https://www.zabbix.com/documentation/4.0/manual/appendix/install/elastic_search_setup
+
 ## Examples of configuration
 
 ### zabbix_repo_yum
@@ -256,6 +265,30 @@ zabbix.conf.php, for example to add LDAP CA certificates. To do this add a `zabb
 - { role: dj-wasabi.zabbix-web, zabbix_url: zabbix.dj-wasabi.nl, zabbix_server_database: mysql, zabbix_server_database_long: mysql, zabbix_server_dbport: 3306, zabbix_web_env: {LDAPTLS_CACERT: /etc/ssl/certs/ourcert.pem}
 ```
 
+## Using Elasticsearch for history storage
+
+To use Elasticsearch for history storage you need to configure the `zabbix_server_history_url` and `zabbix_server_history_types`. You will also need to configure Elasticsearch
+in the zabbix-server (https://galaxy.ansible.com/dj-wasabi/zabbix-server/) role.
+
+Zabbix can store the following history types
+in Elasticsearch:
+* Numeric (unsigned) - `uint`
+* Numeric (float) - `dbl`
+* Character - `str`
+* Log - `log`
+* Text - `text`
+
+To store all history types in the same history URL the following variables should be set (make sure history url points to your Elasticsearch cluster):
+
+```
+zabbix_server_history_url: "http://localhost:9200"
+zabbix_server_history_types:
+  - 'str'
+  - 'text'
+  - 'log'
+  - 'uint'
+  - 'dbl'
+```
 
 # Molecule
 
