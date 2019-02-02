@@ -23,12 +23,12 @@ platforms:
     privileged: True
     groups:
       - postgresql
-  - name: zabbix-web-pgsql-debian
+  - name: zabbix-web-mysql-debian
     image: minimum2scp/systemd-stretch
     privileged: True
     command: /sbin/init
     groups:
-      - postgresql
+      - mysql
   - name: zabbix-web-pgsql-debian
     image: minimum2scp/systemd-stretch
     privileged: True

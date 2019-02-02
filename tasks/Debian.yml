@@ -96,6 +96,14 @@
     - config
     - apache
 
+- name: "Remove provided zabbix.conf files"
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /etc/apache2/conf-available/zabbix.conf
+    - /etc/apache2/conf-enabled/zabbix.conf
+
 - name: "Debian | enable apache vhost"
   file:
     src: /etc/apache2/sites-available/zabbix.conf
