@@ -47,11 +47,10 @@
 
 - name: "Ubuntu | Install php7-{{ zabbix_server_database }}"
   apt:
-    pkg: "{{ item }}"
+    pkg: "{{ ubuntu_packages }}"
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  with_items: "{{ ubuntu_packages }}"
   when: >
     ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '>=')))
     or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '>=')) )
