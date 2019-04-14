@@ -1,10 +1,12 @@
-#ansible-zabbix-web Release
+# ansible-zabbix-web Release
 
 Below an overview of all changes in the releases.
 
 Version (Release date)
 
 UNRELEASED:
+
+1.4.0   (2019-04-14)
 
   * Fixing the rights for config file #39
   * Fixing the require line #40
@@ -13,6 +15,10 @@ UNRELEASED:
   * Always include OS variables #44 (By pull request: jrgoldfinemiddleton (Thanks!))
   * skip repo file when zabbix_repo="other" #45 (By pull request: wschaft (Thanks!))
   * Removal of links to files provided by Zabbix #47
+  * Fix apt module deprecation notice #49 (By pull request: logan2211 (Thanks!))
+  * fix apache servername regex to support hyphen character #51 (By pull request: wschaft (Thanks!))
+  * get the apache version also in check mode #52 (By pull request: wschaft (Thanks!))
+  * Updating to Zabbix 4.2 #53
 
 1.3.0   (2018-10-20)
 
