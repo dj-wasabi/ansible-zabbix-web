@@ -4,6 +4,16 @@ Below an overview of all changes in the releases.
 
 Version (Release date)
 
+UNRELEASED:
+
+  * Fixing the rights for config file #39
+  * Fixing the require line #40
+  * Removed the _type string in various places #42
+  * adds support for elasticsearch history storage #43 (By pull request: MartinHell (Thanks!))
+  * Always include OS variables #44 (By pull request: jrgoldfinemiddleton (Thanks!))
+  * skip repo file when zabbix_repo="other" #45 (By pull request: wschaft (Thanks!))
+  * Removal of links to files provided by Zabbix #47
+
 1.3.0   (2018-10-20)
 
   * Add zabbix 40 #33
