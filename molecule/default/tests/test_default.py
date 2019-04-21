@@ -11,29 +11,29 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
         ("zabbix-server-pgsql", "zabbix-web-pgsql", "zabbix-frontend-php"),
         ("zabbix-server-mysql", "zabbix-web-mysql", "zabbix-frontend-php"),
 ])
-def test_zabbix_package(Package, TestinfraBackend, server, redhat, debian, SystemInfo):
-    host = TestinfraBackend.get_hostname()
+def test_zabbix_package(host, server, redhat, debian):
+    host = host.backend.get_hostname()
     host = host.replace("-centos", "")
     host = host.replace("-debian", "")
     host = host.replace("-ubuntu", "")
 
     if host == server:
-        if SystemInfo.distribution in ['debian', 'ubuntu']:
-            zabbix_web = Package(debian)
+        if host.system_info.distribution in ['debian', 'ubuntu']:
+            zabbix_web = host.package(debian)
             assert zabbix_web.version.startswith("1:4.2")
-        elif SystemInfo.distribution == 'centos':
-            zabbix_web = Package(redhat)
+        elif host.system_info.distribution == 'centos':
+            zabbix_web = host.package(redhat)
             assert zabbix_web.version.startswith("4.2")
         assert zabbix_web.is_installed
 
 
-def test_zabbix_web(File, SystemInfo):
-    zabbix_web = File("/etc/zabbix/web/zabbix.conf.php")
+def test_zabbix_web(host):
+    zabbix_web = host.file("/etc/zabbix/web/zabbix.conf.php")
 
-    if SystemInfo.distribution in ['debian', 'ubuntu']:
+    if host.system_info.distribution in ['debian', 'ubuntu']:
         assert zabbix_web.user == "www-data"
         assert zabbix_web.group == "www-data"
-    elif SystemInfo.distribution == 'centos':
+    elif host.system_info.distribution == 'centos':
         assert zabbix_web.user == "apache"
         assert zabbix_web.group == "apache"
     assert zabbix_web.mode == 0o640
