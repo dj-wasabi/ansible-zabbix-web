@@ -27,7 +27,7 @@ def test_zabbix_package(host, server, redhat, debian):
         assert zabbix_web.is_installed
 
 
-def test_zabbix_web(File, SystemInfo):
+def test_zabbix_web(host):
     zabbix_web = host.file("/etc/zabbix/web/zabbix.conf.php")
 
     if SystemInfo.distribution in ['debian', 'ubuntu']:
