@@ -13,6 +13,7 @@ zabbix_apache_vhost_port: 80
 zabbix_apache_vhost_tls_port: 443
 zabbix_timezone: Europe/Amsterdam
 zabbix_vhost: True
+zabbix_apache_vhost_listen_ip: "*"
 zabbix_apache_tls: False
 zabbix_apache_redirect: False
 zabbix_apache_tls_crt: /etc/pki/server.crt

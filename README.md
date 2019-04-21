@@ -146,6 +146,7 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_apache_vhost_port`: The port on which Zabbix HTTP vhost is running.
 * `zabbix_apache_vhost_tls_port`: The port on which Zabbix HTTPS vhost is running.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
+* `zabbix_apache_vhost_listen_ip`: On which interface the Apache Virtual Host is available.
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:
 * `zabbix_web_post_max_size`:

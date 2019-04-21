@@ -1,4 +1,4 @@
-<VirtualHost *:{{ zabbix_apache_vhost_port }}>
+<VirtualHost {{ zabbix_apache_vhost_listen_ip }}:{{ zabbix_apache_vhost_port }}>
   ServerName {{ zabbix_apache_servername }}
   {% for alias in zabbix_url_aliases %}
   ServerAlias {{ alias }}
