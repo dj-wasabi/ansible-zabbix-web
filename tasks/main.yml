@@ -13,10 +13,14 @@
     - always
 
 - name: "Get Apache version"
-  shell: apachectl -v | grep 'version' | awk -F '/' '{ print $2 }'| awk '{ print $1 }' | cut -c 1-3
+  shell: |
+    set -o pipefail
+    apachectl -v | grep 'version' | awk -F '/' '{ print $2 }'| awk '{ print $1 }' | cut -c 1-3
   changed_when: False
   register: apachectl_version
   check_mode: no
+  args:
+    executable: /bin/bash
   tags:
     - zabbix-web
 
