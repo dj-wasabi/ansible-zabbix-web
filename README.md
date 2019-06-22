@@ -216,7 +216,7 @@ zabbix_repo_yum:
 
 # Dependencies
 
-This role has one "hardcoded" dependency: geerlingguy.apache.
+This role has one dependency for Apache usage: geerlingguy.apache. Via the variable zabbix_websrv != 'apache' this can be skipped.
 
 As it is also possible to run the zabbix-web on a different host than the zabbix-server, the zabbix-server is not configured to be an dependency.
 

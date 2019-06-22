@@ -64,22 +64,22 @@ provisioner:
     host_vars:
       zabbix-web-pgsql-debian:
         zabbix_url: zabbix-web-pgsql-debian
-        zabbix_apache_servername: zabbix-web-pgsql-debian
+        zabbix_websrv_servername: zabbix-web-pgsql-debian
       zabbix-web-mysql-debian:
         zabbix_url: zabbix-web-mysql-debian
-        zabbix_apache_servername: zabbix-web-mysql-debian
+        zabbix_websrv_servername: zabbix-web-mysql-debian
       zabbix-web-pgsql-centos:
         zabbix_url: zabbix-web-pgsql-centos
-        zabbix_apache_servername: zabbix-web-pgsql-centos
+        zabbix_websrv_servername: zabbix-web-pgsql-centos
       zabbix-web-mysql-centos:
         zabbix_url: zabbix-web-mysql-centos
-        zabbix_apache_servername: zabbix-web-mysql-centos
+        zabbix_websrv_servername: zabbix-web-mysql-centos
       zabbix-web-mysql-ubuntu:
         zabbix_url: zabbix-web-mysql-ubuntu
-        zabbix_apache_servername: zabbix-web-mysql-ubuntu
+        zabbix_websrv_servername: zabbix-web-mysql-ubuntu
       zabbix-web-pgsql-ubuntu:
         zabbix_url: zabbix-web-pgsql-ubuntu
-        zabbix_apache_servername: zabbix-web-pgsql-ubuntu
+        zabbix_websrv_servername: zabbix-web-pgsql-ubuntu
 
 scenario:
   name: default
