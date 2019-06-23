@@ -39,7 +39,6 @@
     update_cache: yes
     cache_valid_time: 3600
     name:
-      - libapache2-mod-php
       - php5-{{ zabbix_server_database }}
       - php5-bcmath
       - php5-mbstring
@@ -61,7 +60,6 @@
     update_cache: yes
     cache_valid_time: 3600
     name:
-      - libapache2-mod-php
       - php-{{ zabbix_server_database }}
       - php-bcmath
       - php-mbstring
