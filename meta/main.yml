@@ -27,6 +27,6 @@ galaxy_info:
 
 dependencies:
   - name: geerlingguy.apache
-    src: git+https://github.com/geerlingguy/ansible-role-apache.git
+    src: geerlingguy.apache
     tags: apache
     when: zabbix_websrv == 'apache'
