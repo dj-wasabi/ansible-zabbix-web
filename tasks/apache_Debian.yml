@@ -1,4 +1,12 @@
 ---
+- name: "Debian | Install legacy PHP integration for Apache"
+  apt:
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+    name:
+      - libapache2-mod-php
+
 - name: "Debian | install apache vhost"
   template:
     src: apache_vhost.conf.j2

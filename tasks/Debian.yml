@@ -33,35 +33,9 @@
     - init
     - config
 
-- name: "Debian | Install php5-{{ zabbix_server_database }}"
-  apt:
-    pkg: php5-{{ zabbix_server_database }}
-    state: present
-    update_cache: yes
-    cache_valid_time: 3600
-  register: zabbix_web_php_dependency_install
-  until: zabbix_web_php_dependency_install is succeeded
-  when: >
-    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '<')))
-    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '<')) )
-  tags:
-    - zabbix-web
-    - init
-
-- name: "Ubuntu | Install php7-{{ zabbix_server_database }}"
-  apt:
-    pkg: "{{ ubuntu_packages }}"
-    state: present
-    update_cache: yes
-    cache_valid_time: 3600
-  register: zabbix_web_php_dependency_install
-  until: zabbix_web_php_dependency_install is succeeded
-  when: >
-    ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '>=')))
-    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '>=')) )
-  tags:
-    - zabbix-server
-    - init
+- name: "Debian | Install PHP apart from zabbix-frontend-php deps"
+  include_tasks: "php_Debian.yml"
+  when: zabbix_php_install
 
 - name: "Debian | Install zabbix-web"
   apt:
