@@ -26,4 +26,7 @@ galaxy_info:
     - zabbix
 
 dependencies:
-  - {name: geerlingguy.apache, src: geerlingguy.apache, tags: apache}
+  - name: geerlingguy.apache
+    src: geerlingguy.apache
+    tags: apache
+    when: zabbix_websrv == 'apache'
