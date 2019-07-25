@@ -19,6 +19,7 @@
   yum:
     pkg: zabbix-web-{{ zabbix_server_database }}
     state: "{{ zabbix_web_package_state }}"
+    update_cache: yes
   register: zabbix_web_package_install
   until: zabbix_web_package_install is succeeded
   tags:
