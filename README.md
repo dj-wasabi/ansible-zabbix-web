@@ -4,6 +4,7 @@ Table of Contents
 - [Requirements](#requirements)
   * [Operating Systems](#operating-systems)
   * [Zabbix Versions](#zabbix-versions)
+    + [Zabbix 4.2](#zabbix-42)
     + [Zabbix 4.0](#zabbix-40)
     + [Zabbix 3.4](#zabbix-34)
     + [Zabbix 3.2](#zabbix-32)
@@ -59,6 +60,15 @@ Please sent Pull Requests or suggestions when you want to use this role for othe
 
 See the following list of supported Operating Systems with the Zabbix releases.
 
+### Zabbix 4.2
+  * CentOS 7.x
+  * Amazon 7.x
+  * RedHat 7.x
+  * OracleLinux 7.x
+  * Scientific Linux 7.x
+  * Ubuntu 14.04, 16.04, 18.04
+  * Debian 8, 9
+  
 ### Zabbix 4.0
 
   * CentOS 7.x
@@ -133,7 +143,7 @@ The following is an overview of all available configuration defaults for this ro
 
 ### Overall Zabbix
 
-* `zabbix_version`: This is the version of zabbix. Default: 3.4. Can be overridden to 3.2, 3.0, 2.4, or 2.2.
+* `zabbix_version`: This is the version of zabbix. Default: 4.2, Can be overridden to 4.0, 3.4, 3.2, 3.0, 2.4, or 2.2.
 * `zabbix_repo_yum`: A list with Yum repository configuration.
 * `zabbix_web_package_state`: Default: _present_. Can be overridden to "latest" to update packages when needed.
 
