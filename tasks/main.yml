@@ -67,6 +67,6 @@
     persistent: yes
     state: yes
   when:
-     - ansible_selinux.status == "enabled"
-     - zabbix_apache_can_connect_ldap|bool
+    - ansible_selinux.status == "enabled"
+    - zabbix_apache_can_connect_ldap|bool
   tags: selinux
