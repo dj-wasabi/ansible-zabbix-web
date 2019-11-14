@@ -60,3 +60,13 @@
     state: yes
   when: ansible_selinux.status == "enabled"
   tags: selinux
+
+- name: "Allow httpd to connect to ldap (SELinux)"
+  seboolean:
+    name: httpd_can_connect_ldap
+    persistent: yes
+    state: yes
+  when:
+     - ansible_selinux.status == "enabled"
+     - zabbix_apache_can_connect_ldap|bool
+  tags: selinux
