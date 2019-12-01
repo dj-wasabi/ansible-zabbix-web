@@ -73,3 +73,5 @@ zabbix_server_history_types:
   - 'log'
   - 'uint'
   - 'dbl'
+
+selinux_allow_zabbix_can_network: False
