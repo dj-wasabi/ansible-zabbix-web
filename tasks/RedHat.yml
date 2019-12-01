@@ -48,8 +48,8 @@
     name:
       - python3-libsemanage
     state: present
-  register: zabbix_server_dependencies_installed
-  until: zabbix_server_dependencies_installed is succeeded
+  register: zabbix_web_dependencies_installed
+  until: zabbix_web_dependencies_installed is succeeded
   when:
     - selinux_allow_zabbix_can_network
     - ansible_distribution_major_version == "8"
