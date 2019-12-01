@@ -135,6 +135,11 @@ Installing this role is very simple: `ansible-galaxy install dj-wasabi.zabbix-we
 
 When the Zabbix Web needs to be running on the same host as the Zabbix Server, please also install the Zabbix Server by executing the following command: `ansible-galaxy install dj-wasabi.zabbix-server`
 
+ Default username/password for the Zabbix Web interface is the default.
+
+ Username: Admin
+ Password: zabbix
+
 # Role Variables
 
 ## Main variables
@@ -157,6 +162,7 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_apache_vhost_tls_port`: The port on which Zabbix HTTPS vhost is running.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_apache_vhost_listen_ip`: On which interface the Apache Virtual Host is available.
+* `zabbix_apache_can_connect_ldap`: True / False. Set SELinux boolean to allow httpd to connect to LDAP. Default is False.
 * `zabbix_php_install`: True / False. Switch for extra install of packages for PHP, currently on for Debian/Ubuntu. Default is true. 
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:

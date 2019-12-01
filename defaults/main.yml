@@ -1,7 +1,7 @@
 ---
 # defaults file for zabbix-web
 
-zabbix_version: 4.2
+zabbix_version: 4.4
 zabbix_repo: zabbix
 zabbix_web_package_state: present
 zabbix_selinux: False
@@ -20,6 +20,7 @@ zabbix_apache_redirect: False
 zabbix_apache_tls_crt: /etc/pki/server.crt
 zabbix_apache_tls_key: /etc/pki/server.key
 zabbix_apache_tls_chain:
+zabbix_apache_can_connect_ldap: False
 
 zabbix_repo_yum:
   - name: zabbix
