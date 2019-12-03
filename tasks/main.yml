@@ -58,7 +58,9 @@
     name: httpd_can_network_connect_db
     persistent: yes
     state: yes
-  when: ansible_selinux.status == "enabled"
+  when:
+    - ansible_selinux.status == "enabled"
+    - selinux_allow_zabbix_can_network
   tags: selinux
 
 - name: "Allow httpd to connect to ldap (SELinux)"
