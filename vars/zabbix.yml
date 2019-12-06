@@ -2,6 +2,8 @@
 
 sign_keys:
   "44":
+    buster:
+      sign_key: A14FE591
     cosmic:
       sign_key: A14FE591
     bionic:
