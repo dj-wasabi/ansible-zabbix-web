@@ -6,6 +6,19 @@ Version (Release date)
 
 UNRELEASED:
 
+1.5.0   (2019-12-01)
+
+  * Added vhost interface variable #55 (By pull request: okgolove (Thanks!))
+  * Minor changes for molecule #56
+  * Make Apache optional but keep as default; Closes dj-wasabi/ansible-zabbix-web#58 #59 (By pull request: kr4ut (Thanks!))
+  * Refactor PHP pkg install for Debian/Ubuntu; Closes dj-wasabi/ansible-zabbix-web#57 #60 (By pull request: kr4ut (Thanks!))
+  * Add update_cache: yes to tasks/RedHat.yml #64 (By pull request: patsevanton (Thanks!))
+  * readme update that default is 4.2 #67 (By pull request: fabtho (Thanks!))
+  * Update main.yml #68 (By pull request: Vinclame (Thanks!))
+  * SELinux boolean added for httpd -> ldap connections #69 (By pull request: Vinclame (Thanks!))
+  * Zabbix 44 #71
+  * Using travis envs #72
+
 1.4.0   (2019-04-14)
 
   * Fixing the rights for config file #39

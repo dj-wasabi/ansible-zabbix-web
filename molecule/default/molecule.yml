@@ -13,40 +13,12 @@ lint:
   options:
     config-file: molecule/default/yaml-lint.yml
 platforms:
-  - name: zabbix-web-mysql-centos
-    image: milcom/centos7-systemd
-    privileged: True
-    groups:
-      - mysql
-  - name: zabbix-web-pgsql-centos
-    image: milcom/centos7-systemd
-    privileged: True
-    groups:
-      - postgresql
-  - name: zabbix-web-mysql-debian
-    image: minimum2scp/systemd-stretch
+  - name: zabbix-web-${MY_MOLECULE_CONTAINER:-mysql-centos}
+    image: ${MY_MOLECULE_IMAGE:-"milcom/centos7-systemd"}
     privileged: True
     command: /sbin/init
     groups:
-      - mysql
-  - name: zabbix-web-pgsql-debian
-    image: minimum2scp/systemd-stretch
-    privileged: True
-    command: /sbin/init
-    groups:
-      - postgresql
-  - name: zabbix-web-mysql-ubuntu
-    image: solita/ubuntu-systemd:latest
-    privileged: True
-    command: /sbin/init
-    groups:
-      - mysql
-  - name: zabbix-web-pgsql-ubuntu
-    image: solita/ubuntu-systemd:latest
-    privileged: True
-    command: /sbin/init
-    groups:
-      - postgresql
+      - ${MY_MOLECULE_GROUP:-mysql}
 
 provisioner:
   name: ansible
@@ -64,22 +36,22 @@ provisioner:
     host_vars:
       zabbix-web-pgsql-debian:
         zabbix_url: zabbix-web-pgsql-debian
-        zabbix_apache_servername: zabbix-web-pgsql-debian
+        zabbix_websrv_servername: zabbix-web-pgsql-debian
       zabbix-web-mysql-debian:
         zabbix_url: zabbix-web-mysql-debian
-        zabbix_apache_servername: zabbix-web-mysql-debian
+        zabbix_websrv_servername: zabbix-web-mysql-debian
       zabbix-web-pgsql-centos:
         zabbix_url: zabbix-web-pgsql-centos
-        zabbix_apache_servername: zabbix-web-pgsql-centos
+        zabbix_websrv_servername: zabbix-web-pgsql-centos
       zabbix-web-mysql-centos:
         zabbix_url: zabbix-web-mysql-centos
-        zabbix_apache_servername: zabbix-web-mysql-centos
+        zabbix_websrv_servername: zabbix-web-mysql-centos
       zabbix-web-mysql-ubuntu:
         zabbix_url: zabbix-web-mysql-ubuntu
-        zabbix_apache_servername: zabbix-web-mysql-ubuntu
+        zabbix_websrv_servername: zabbix-web-mysql-ubuntu
       zabbix-web-pgsql-ubuntu:
         zabbix_url: zabbix-web-pgsql-ubuntu
-        zabbix_apache_servername: zabbix-web-pgsql-ubuntu
+        zabbix_websrv_servername: zabbix-web-pgsql-ubuntu
 
 scenario:
   name: default

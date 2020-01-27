@@ -1,13 +1,14 @@
 ---
 # defaults file for zabbix-web
 
-zabbix_version: 4.2
+zabbix_version: 4.4
 zabbix_repo: zabbix
 zabbix_web_package_state: present
 zabbix_selinux: False
 
 zabbix_url: zabbix.example.com
-zabbix_apache_servername: "{{ zabbix_url | regex_findall('(?:https?\\://)?([\\w\\-\\.]+)') | first }}"
+zabbix_websrv: apache
+zabbix_websrv_servername: "{{ zabbix_url | regex_findall('(?:https?\\://)?([\\w\\-\\.]+)') | first }}"
 zabbix_url_aliases: []
 zabbix_apache_vhost_port: 80
 zabbix_apache_vhost_tls_port: 443
@@ -19,6 +20,7 @@ zabbix_apache_redirect: False
 zabbix_apache_tls_crt: /etc/pki/server.crt
 zabbix_apache_tls_key: /etc/pki/server.key
 zabbix_apache_tls_chain:
+zabbix_apache_can_connect_ldap: False
 
 zabbix_repo_yum:
   - name: zabbix
@@ -34,6 +36,7 @@ zabbix_repo_yum:
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
     state: present
 
+zabbix_php_install: true
 zabbix_web_max_execution_time: 300
 zabbix_web_memory_limit: 128M
 zabbix_web_post_max_size: 16M
@@ -70,3 +73,5 @@ zabbix_server_history_types:
   - 'log'
   - 'uint'
   - 'dbl'
+
+selinux_allow_zabbix_can_network: False

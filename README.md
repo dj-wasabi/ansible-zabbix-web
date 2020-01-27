@@ -4,6 +4,8 @@ Table of Contents
 - [Requirements](#requirements)
   * [Operating Systems](#operating-systems)
   * [Zabbix Versions](#zabbix-versions)
+    + [Zabbix 4.4](#zabbix-44)
+    + [Zabbix 4.2](#zabbix-42)
     + [Zabbix 4.0](#zabbix-40)
     + [Zabbix 3.4](#zabbix-34)
     + [Zabbix 3.2](#zabbix-32)
@@ -59,6 +61,24 @@ Please sent Pull Requests or suggestions when you want to use this role for othe
 
 See the following list of supported Operating Systems with the Zabbix releases.
 
+### Zabbix 4.4
+  * CentOS 7.x, 8.x
+  * Amazon 7.x
+  * RedHat 7.x, 8.x
+  * OracleLinux 7.x, 8.x
+  * Scientific Linux 7.x, 8.x
+  * Ubuntu 14.04, 16.04, 18.04
+  * Debian 8, 9
+
+### Zabbix 4.2
+  * CentOS 7.x
+  * Amazon 7.x
+  * RedHat 7.x
+  * OracleLinux 7.x
+  * Scientific Linux 7.x
+  * Ubuntu 14.04, 16.04, 18.04
+  * Debian 8, 9
+  
 ### Zabbix 4.0
 
   * CentOS 7.x
@@ -125,6 +145,11 @@ Installing this role is very simple: `ansible-galaxy install dj-wasabi.zabbix-we
 
 When the Zabbix Web needs to be running on the same host as the Zabbix Server, please also install the Zabbix Server by executing the following command: `ansible-galaxy install dj-wasabi.zabbix-server`
 
+ Default username/password for the Zabbix Web interface is the default.
+
+ Username: Admin
+ Password: zabbix
+
 # Role Variables
 
 ## Main variables
@@ -133,7 +158,7 @@ The following is an overview of all available configuration defaults for this ro
 
 ### Overall Zabbix
 
-* `zabbix_version`: This is the version of zabbix. Default: 3.4. Can be overridden to 3.2, 3.0, 2.4, or 2.2.
+* `zabbix_version`: This is the version of zabbix. Default: 4.2, Can be overridden to 4.0, 3.4, 3.2, 3.0, 2.4, or 2.2.
 * `zabbix_repo_yum`: A list with Yum repository configuration.
 * `zabbix_web_package_state`: Default: _present_. Can be overridden to "latest" to update packages when needed.
 
@@ -147,6 +172,8 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_apache_vhost_tls_port`: The port on which Zabbix HTTPS vhost is running.
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_apache_vhost_listen_ip`: On which interface the Apache Virtual Host is available.
+* `zabbix_apache_can_connect_ldap`: True / False. Set SELinux boolean to allow httpd to connect to LDAP. Default is False.
+* `zabbix_php_install`: True / False. Switch for extra install of packages for PHP, currently on for Debian/Ubuntu. Default is true. 
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:
 * `zabbix_web_post_max_size`:
@@ -216,7 +243,7 @@ zabbix_repo_yum:
 
 # Dependencies
 
-This role has one "hardcoded" dependency: geerlingguy.apache.
+This role has one dependency for Apache usage: geerlingguy.apache. Via the variable zabbix_websrv != 'apache' this can be skipped.
 
 As it is also possible to run the zabbix-web on a different host than the zabbix-server, the zabbix-server is not configured to be an dependency.
 
