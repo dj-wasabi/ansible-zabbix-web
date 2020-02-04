@@ -1,7 +1,8 @@
 ---
 # defaults file for zabbix-web
 
-zabbix_version: 4.4
+zabbix_web_version: 4.4
+zabbix_version: "{{ zabbix_web_version }}"
 zabbix_repo: zabbix
 zabbix_web_package_state: present
 zabbix_selinux: False
