@@ -78,7 +78,7 @@ See the following list of supported Operating Systems with the Zabbix releases.
   * Scientific Linux 7.x
   * Ubuntu 14.04, 16.04, 18.04
   * Debian 8, 9
-  
+
 ### Zabbix 4.0
 
   * CentOS 7.x
@@ -158,7 +158,7 @@ The following is an overview of all available configuration defaults for this ro
 
 ### Overall Zabbix
 
-* `zabbix_version`: This is the version of zabbix. Default: 4.2, Can be overridden to 4.0, 3.4, 3.2, 3.0, 2.4, or 2.2.
+* `zabbix_web_version`: This is the version of zabbix. Default: 4.4, Can be overridden to 4.0, 3.4, 3.2, 3.0, 2.4, or 2.2. Previously the variable `zabbix_version` was used directly but it could cause [some inconvenience](https://github.com/dj-wasabi/ansible-zabbix-agent/pull/303). That variable is maintained by retrocompativility.
 * `zabbix_repo_yum`: A list with Yum repository configuration.
 * `zabbix_web_package_state`: Default: _present_. Can be overridden to "latest" to update packages when needed.
 
@@ -173,7 +173,7 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_apache_vhost_port`: On which port the Apache Virtual Host is available.
 * `zabbix_apache_vhost_listen_ip`: On which interface the Apache Virtual Host is available.
 * `zabbix_apache_can_connect_ldap`: True / False. Set SELinux boolean to allow httpd to connect to LDAP. Default is False.
-* `zabbix_php_install`: True / False. Switch for extra install of packages for PHP, currently on for Debian/Ubuntu. Default is true. 
+* `zabbix_php_install`: True / False. Switch for extra install of packages for PHP, currently on for Debian/Ubuntu. Default is true.
 * `zabbix_web_max_execution_time`:
 * `zabbix_web_memory_limit`:
 * `zabbix_web_post_max_size`:
