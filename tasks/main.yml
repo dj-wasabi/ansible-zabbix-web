@@ -63,6 +63,16 @@
     - selinux_allow_zabbix_can_network
   tags: selinux
 
+- name: "Allow httpd to connect to zabbix (SELinux)"
+  seboolean:
+    name: httpd_can_connect_zabbix
+    persistent: yes
+    state: yes
+  when:
+    - ansible_selinux.status == "enabled"
+    - selinux_allow_zabbix_can_network
+  tags: selinux
+
 - name: "Allow httpd to connect to ldap (SELinux)"
   seboolean:
     name: httpd_can_connect_ldap
