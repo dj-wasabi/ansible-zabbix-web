@@ -179,7 +179,7 @@ The following is an overview of all available configuration defaults for this ro
 * `zabbix_web_post_max_size`:
 * `zabbix_web_upload_max_filesize`:
 * `zabbix_web_max_input_time`:
-* `zabbix_apache_skip_custom_fragment`: True / False. Skips adding of php_value vars max_execution_time, memory_limit, post_max_size, upload_max_filesize, max_input_time and date.timezone in vhost file.. place those in php-fpm configuration. Default is false
+* `zabbix_apache_include_custom_fragment`: True / False. Includes php_value vars max_execution_time, memory_limit, post_max_size, upload_max_filesize, max_input_time and date.timezone in vhost file.. place those in php-fpm configuration. Default is true.
 * `zabbix_web_env`: (Optional) A Dictionary of PHP Environments
 
 The following properties are related when TLS/SSL is configured:
