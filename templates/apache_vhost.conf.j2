@@ -127,6 +127,7 @@ SSLCryptoDevice {{ zabbix_apache_SSLCryptoDevice }}
   RewriteEngine On
   RewriteRule ^$ /index.php [L]
 
+{% if zabbix_apache_include_custom_fragment | default(true) %}
   ## Custom fragment
   php_value max_execution_time {{ zabbix_web_max_execution_time | default('300') }}
   php_value memory_limit {{ zabbix_web_memory_limit | default('128M') }}
@@ -135,5 +136,6 @@ SSLCryptoDevice {{ zabbix_apache_SSLCryptoDevice }}
   php_value max_input_time {{ zabbix_web_max_input_time | default('300') }}
   # Set correct timezone.
   php_value date.timezone {{ zabbix_timezone }}
+{% endif %}
 </VirtualHost>
 {% endif %}
