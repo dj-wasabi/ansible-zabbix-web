@@ -43,6 +43,7 @@ zabbix_web_memory_limit: 128M
 zabbix_web_post_max_size: 16M
 zabbix_web_upload_max_filesize: 2M
 zabbix_web_max_input_time: 300
+zabbix_apache_skip_custom_fragment: false
 
 zabbix_apache_SSLPassPhraseDialog: exec:/usr/libexec/httpd-ssl-pass-dialog
 zabbix_apache_SSLSessionCache: shmcb:/run/httpd/sslcache(512000)
