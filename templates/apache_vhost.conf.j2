@@ -49,6 +49,10 @@
   RewriteRule ^$ /index.php [L]
 
   ## Custom fragment
+  {% if zabbix_php_fpm %}
+  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/usr/share/zabbix/$1
+  ProxyTimeout 1800
+  {% else %}
   php_value max_execution_time {{ zabbix_web_max_execution_time | default('300') }}
   php_value memory_limit {{ zabbix_web_memory_limit | default('128M') }}
   php_value post_max_size {{ zabbix_web_post_max_size | default('16M') }}
@@ -56,6 +60,7 @@
   php_value max_input_time {{ zabbix_web_max_input_time | default('300') }}
   # Set correct timezone.
   php_value date.timezone {{ zabbix_timezone }}
+  {% endif %}
 </VirtualHost>
 
 {# Set up TLS vhosts #}
@@ -126,6 +131,10 @@ SSLCryptoDevice {{ zabbix_apache_SSLCryptoDevice }}
   RewriteRule ^$ /index.php [L]
 
   ## Custom fragment
+  {% if zabbix_php_fpm %}
+  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/usr/share/zabbix/$1
+  ProxyTimeout 1800
+  {% else %}
   php_value max_execution_time {{ zabbix_web_max_execution_time | default('300') }}
   php_value memory_limit {{ zabbix_web_memory_limit | default('128M') }}
   php_value post_max_size {{ zabbix_web_post_max_size | default('16M') }}
@@ -133,5 +142,6 @@ SSLCryptoDevice {{ zabbix_apache_SSLCryptoDevice }}
   php_value max_input_time {{ zabbix_web_max_input_time | default('300') }}
   # Set correct timezone.
   php_value date.timezone {{ zabbix_timezone }}
+  {% endif %}
 </VirtualHost>
 {% endif %}
