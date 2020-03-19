@@ -60,6 +60,7 @@ zabbix_server_dbname: zabbix-server
 zabbix_server_dbuser: zabbix-server
 zabbix_server_dbpassword: zabbix-server
 zabbix_server_dbport: 5432
+zabbix_server_dbschema:
 
 # Elasticsearch
 # zabbix_server_history_url:

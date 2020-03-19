@@ -13,8 +13,8 @@ $DB['DATABASE'] = '{{ zabbix_server_dbname }}';
 $DB['USER']     = '{{ zabbix_server_dbuser }}';
 $DB['PASSWORD'] = '{{ zabbix_server_dbpassword }}';
 
-// SCHEMA is relevant only for IBM_DB2 database
-$DB['SCHEMA'] = '';
+// Schema name. Used for IBM DB2 and PostgreSQL.
+$DB['SCHEMA'] = '{{ zabbix_server_dbschema }}';
 
 $ZBX_SERVER      = '{{ zabbix_server_hostname }}';
 $ZBX_SERVER_PORT = '{{ zabbix_server_listenport }}';
