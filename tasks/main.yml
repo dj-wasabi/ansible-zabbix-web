@@ -53,6 +53,14 @@
     - init
     - config
 
+- name: "Allow httpd to connect to zabbix (SELinux)"
+  seboolean:
+    name: httpd_can_connect_zabbix
+    persistent: yes
+    state: yes
+  when: ansible_selinux.status == "enabled"
+  tags: selinux
+
 - name: "Allow httpd to connect to db (SELinux)"
   seboolean:
     name: httpd_can_network_connect_db
