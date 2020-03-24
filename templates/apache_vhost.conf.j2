@@ -60,7 +60,7 @@
   php_value max_input_time {{ zabbix_web_max_input_time | default('300') }}
   # Set correct timezone.
   php_value date.timezone {{ zabbix_timezone }}
-  {% endif %}
+{% endif %}
 </VirtualHost>
 
 {# Set up TLS vhosts #}
@@ -142,6 +142,6 @@ SSLCryptoDevice {{ zabbix_apache_SSLCryptoDevice }}
   php_value max_input_time {{ zabbix_web_max_input_time | default('300') }}
   # Set correct timezone.
   php_value date.timezone {{ zabbix_timezone }}
-  {% endif %}
+{% endif %}
 </VirtualHost>
 {% endif %}
