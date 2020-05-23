@@ -4,7 +4,18 @@ Below an overview of all changes in the releases.
 
 Version (Release date)
 
-UNRELEASED:
+FINAL and LAST release for this role in this repository. This role will be transferred to: https://github.com/ansible-collections/community.zabbix/
+
+1.6.0   (2020-05-23)
+
+  * Added installation of selinux package #74
+  * 4.4 supports Debian buster #75 (By pull request: lingfish (Thanks!))
+  * Avoid conflicts with zabbix_version var #77 (By pull request: santiagomr (Thanks!))
+  * adding zabbix_apache_skip_custom_fragment to prevent php_values in conf #79 (By pull request: tobiasehlert (Thanks!))
+  * Correcting custom fragment PR 79 #80 (By pull request: tobiasehlert (Thanks!))
+  * Adding zabbix_apache_include_custom_fragment to TLS section #81 (By pull request: tobiasehlert (Thanks!))
+  * selinux blocking httpd connection to zabbix #82 (By pull request: SimBou (Thanks!))
+  * php-fpm, zabbix db schema and apachectl path #85 (By pull request: v (Thanks!))
 
 1.5.0   (2019-12-01)
 

@@ -31,19 +31,8 @@ Table of Contents
 
 # Overview
 
-Build Status:
-
-[![Build Status](https://travis-ci.org/dj-wasabi/ansible-zabbix-web.svg?branch=master)](https://travis-ci.org/dj-wasabi/ansible-zabbix-web)
-
-This is a role for installing and maintaining zabbix-web, the web UI for the zabbix-server.
-
-This is one of the 'dj-wasabi' roles which configures your whole zabbix environment. See the complete list:
-
- * zabbix-web (https://galaxy.ansible.com/dj-wasabi/zabbix-web/)
- * zabbix-server (https://galaxy.ansible.com/dj-wasabi/zabbix-server/)
- * zabbix-proxy (https://galaxy.ansible.com/dj-wasabi/zabbix-proxy/)
- * zabbix-javagateway (https://galaxy.ansible.com/dj-wasabi/zabbix-javagateway/)
- * zabbix-agent (https://galaxy.ansible.com/dj-wasabi/zabbix-agent/)
+This role is migrated to: https://github.com/ansible-collections/community.zabbix/
+In this repository, a read only version is/will be available for those who can not make use of collections (yet). Changes/updates will only be applied to the collection and not in this repository.
 
 # Requirements
 ## Operating Systems
