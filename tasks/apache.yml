@@ -1,6 +1,7 @@
 ---
 - name: "Apache | Get Apache version"
   shell: |
+    PATH=/usr/sbin:$PATH
     set -o pipefail
     apachectl -v | grep 'version' | awk -F '/' '{ print $2 }'| awk '{ print $1 }' | cut -c 1-3
   changed_when: False
